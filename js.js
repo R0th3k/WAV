@@ -79,11 +79,11 @@ if (localStorage.getItem('remainingCredit') == null) {
     localStorage.setItem('remainingCredit', credit - cartAmount);
 }
 let remainigCredit = Number(localStorage.getItem('remainingCredit'));
-function saveRemainimgCredit() {
+function saveRemainingCredit() {
     localStorage.setItem('remainingCredit', credit - cartAmount);
 }
-function substractRemainimgCredit(p) {
-    localStorage.setItem('remainingCredit', remainingCredit - p);
+function substractRemainingCredit(p) {
+    localStorage.setItem('remainingCredit', remainigCredit - p);
 }
 console.log('Amount:' + cartAmount)
 console.log('remainig credit: ' + remainigCredit)
@@ -112,7 +112,7 @@ function saveTower(p) {
     let qty = qtyTower + p;
     localStorage.setItem('qtyTower', qty);
     localStorage.setItem('totalTower', qty * priceTower);
-    saveRemainimgCredit();
+    saveRemainingCredit();
     refreshPage();
 }
 if (localStorage.getItem('totalTower') == null) {
@@ -350,7 +350,7 @@ document.addEventListener("keydown", function (event) {
                 alert('See Top Ten List')
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//fin gameHome
     if (section == 'gameLearn') {
@@ -377,7 +377,7 @@ document.addEventListener("keydown", function (event) {
                 alert('USA Mid-West')
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//fin gameStartConstruction
     if (section == 'selectTeam') {
@@ -403,7 +403,7 @@ document.addEventListener("keydown", function (event) {
                 redirectPage('name-company')
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//fin Select team
     //emptyLot
@@ -434,7 +434,7 @@ document.addEventListener("keydown", function (event) {
                 redirectPage('ask-wav')
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//fin Select task
     //trenchFiber
@@ -453,7 +453,7 @@ document.addEventListener("keydown", function (event) {
                 redirectPage('build-your-own-towers')
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//Fin survey
     //leverageExistingEstructure
@@ -517,12 +517,12 @@ document.addEventListener("keydown", function (event) {
                 break
             case 32:
                 saveCartAmount();
-                saveRemainimgCredit();
+                saveRemainingCredit();
                 refreshPage()
                 redirectPage('build-your-network')
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//Fin Purchase
     //ask-advice
@@ -530,7 +530,7 @@ document.addEventListener("keydown", function (event) {
         switch (event.keyCode) {
             case 49:
                 saveCartAmount();
-                saveRemainimgCredit();
+                saveRemainingCredit();
                 redirectPage('build-your-network');
                 //alert('purshased')
                 //refreshPage();
@@ -540,7 +540,7 @@ document.addEventListener("keydown", function (event) {
                 redirectPage('purchase')
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//Fin ask-advice
     //ask-wav
@@ -554,7 +554,7 @@ document.addEventListener("keydown", function (event) {
                 redirectPage('select-task')
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//Fin ask-wav
     //start-tower
@@ -570,14 +570,40 @@ document.addEventListener("keydown", function (event) {
                 break
             case 32:
                 if (priceTower <= remainigCredit) {
-                    saveTower(1)
-                    saveRemainimgCredit()
+                    saveRemainingCredit()
+                    substractCrewMorale(10)
+                    addDaySpent(3)
+                    redirectPage('dropped-a-bolt')
                 }
                 break
             default:
-                console.log("opcion invalida")
+                console.log("invalid option")
         }
     }//Fin start-tower
+    //dropped-a-bolt
+    if (section == 'dropped-a-bolt') {
+        switch (event.keyCode) {
+            case 32:
+                    addDaySpent(2)
+                    redirectPage('towers-built')
+                break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin start-tower
+    if (section == 'towers-built') {
+        if (event.keyCode == 32) {
+           
+            redirectPage('punish-path')
+        }
+    }//Fin towers-built
+    if (section == 'punish-path') {
+        if (event.keyCode == 32) {
+            addDaySpent(4)
+            substractCrewMorale(10)
+            redirectPage('install-distribution-nodes')
+        }
+    }//Fin punish-path
     if (section == 'build-your-network') {
         if (event.keyCode == 32) {
             if (RNG == 1) {
@@ -617,6 +643,63 @@ document.addEventListener("keydown", function (event) {
             redirectPage('successfully-installed ')
         }
     }//Fin installations-subscribers
+    if(section == 'successfully-installed'){
+        switch (event.keyCode) {
+            case 49:
+                redirectPage('linkplanner')
+                break
+            case 50:
+                addDaySpent(1)
+                saveV1000(3)
+                redirectPage('purchase-3-additional-v1000')
+            break
+            case 51:
+                redirectPage('ask-wav-for-advice')
+                break
+            default:
+                console.log("invalid option")
+        }
+    }//successfully-installed
+    if(section == 'purchase-3-additional-v1000'){
+        switch (event.keyCode) {
+            case 32:
+                redirectPage('run-linkplanner')
+                break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin ask-wav-for-advice
+    if(section == 'ask-wav-for-advice'){
+        switch (event.keyCode) {
+            case 32:
+                redirectPage('linkplanner')
+                break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin run-linkplanner
+    if(section == 'run-linkplanner'){
+        switch (event.keyCode) {
+            case 32:
+                redirectPage('linkplanner')
+                break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin run-linkplanner
+    if(section == 'linkplanner'){
+        switch (event.keyCode) {
+            case 32:
+                addDaySpent(1)
+                addSubscribers(3)
+                addCustomerSatisfaction(25)
+                substractRemainingCredit(48)
+                redirectPage('connectivity-to-the-farms')
+                break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin link planner
 })//Fin eventos del teclado
 //eventos clic
 if (section == 'gameHome') {
@@ -686,7 +769,16 @@ if (section == 'ask-advice') {
     totalDiv.innerHTML = ` Total: <span style="text-decoration:line-through;">W</span>${cartAmount}`
     balanceDiv.innerHTML = ` Your Balance: <span style="text-decoration:line-through;">W</span>${remainigCredit}`
 }
-if (section == 'build-your-network' || section == 'lesser-path' || section == 'install-distribution-nodes' || section == 'installed-remaining' || section == 'installations-subscribers' || section == 'successfully-installed') {
+if (section == 'build-your-network' 
+    || section == 'lesser-path' 
+    || section == 'install-distribution-nodes' 
+    || section == 'installed-remaining' 
+    || section == 'installations-subscribers'  
+    || section == 'dropped-a-bolt'
+    || section == 'towers-built'
+    || section == 'punish-path'
+    || section == 'connectivity-to-the-farms'
+    ) {
     crewMoraleTag.innerText = crewMorale;
     subscribersTag.innerText = subscribers;
     daySpentTag.innerText = daySpent;
