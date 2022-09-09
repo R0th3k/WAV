@@ -1,0 +1,22 @@
+.screen_top_default {
+    position: relative;
+    background-image: url(https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/62ffccb90fae40f322b1c0d2_screen_farm_top.jpg);
+    background-position: 0px 0px;
+    background-size: cover;
+}
+.screen_bottom_default {
+    background-image: url(https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/62ffd4067ea1b37192d07ecb_terrain_farm.jpg);
+    background-position: 0px 0px;
+    background-size: auto;
+}
+.screen_top_canada {
+    position: relative;
+    background-image: url(https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/62ffccbabf37dafb4ad09ca9_screen_top_mountain.jpg);
+    background-position: 0px 0px;
+    background-size: cover;
+}
+.screen_bottom_canada {
+    background-image: url(https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/62ffccbaa99af517207b3280_terrain_mountain.jpg);
+    background-position: 0px 0px;
+    background-size: auto;
+}
