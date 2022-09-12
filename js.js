@@ -252,11 +252,9 @@ function redirectPage(path) {
 }
 //Guardar usuario
 let userNameInput = document.getElementById('userName')
-
 if(userNameInput){
     userNameInput.setAttribute('onblur','saveUser()')
 }
-
 function saveUser() {    
     if (!userNameInput.value) {
         alert('Empty Value');
@@ -288,17 +286,14 @@ let character = localStorage.getItem("character");
 let userCompany = localStorage.getItem("userCompany");
 //Obtener e imprimir usuario
 let theUserTag = document.getElementById("theUser");
-
 if (theUserTag) {
     theUserTag.innerHTML = `<b>${userName}</b>`;
 }
 let theDaysSpent = document.getElementById("theDaysSpent");
-
 if (theDaysSpent) {
     theDaysSpent.innerHTML = `<b>${daySpent}</b>`;
 }
 let qtyTowers = document.getElementById("qtyTowers");
-
 if (qtyTowers) {
     qtyTowers.innerHTML = `<b>${qtyTower}</b>`;
 }
@@ -307,32 +302,26 @@ let screenTop = document.getElementById("screenTop");
 let screenBottom = document.getElementById("screenBottom");
 console.log(localStorage.getItem('region'))
 switch (region) {
-
     case "canada":
         screenTop.classList.add("screen_top_canada");
         screenBottom.classList.add("screen_bottom_canada");
     break
-
     case "usa-west":
         screenTop.classList.add("screen_top_usa-west");
         screenBottom.classList.add("screen_bottom_usa-west");
     break
-
     case "usa-east":
         screenTop.classList.add("screen_top_usa-east");
         screenBottom.classList.add("screen_bottom_usa-east");
     break
-
     case "usa-mid-west":
         screenTop.classList.add("screen_top_usa-mid-west");
         screenBottom.classList.add("screen_bottom_usa-mid-west");
     break
-
     case "city":
         screenTop.classList.add("screen_top_city");
         screenBottom.classList.add("screen_bottom_factory");
     break
-
     default:
         console.log('no region')
         screenTop.classList.add("screen_top_default");
@@ -620,7 +609,6 @@ document.addEventListener("keydown", function (event) {
     }//Fin start-tower
     if (section == 'towers-built') {
         if (event.keyCode == 32) {
-           
             redirectPage('punish-path')
         }
     }//Fin towers-built
@@ -815,19 +803,32 @@ document.addEventListener("keydown", function (event) {
             redirectPage('end')
         }
     }//fin missed-out
+    if(section == 'end'){
+        switch (event.keyCode) {
+            case 49:
+            break
+            case 50:
+            break
+            case 51:
+            break
+            case 52:
+                redirectPage('stats')
+            break
+            case 53:
+            break
+            case 54:
+            break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin end
+    if(section == 'stats'){
+        if(event.keyCode == 32){
+            redirectPage('end')
+        }
+    }//fin missed-out
 })//Fin eventos del teclado
 //eventos clic
-if (section == 'gameHome') {
-    document.getElementById("startConstruction").addEventListener("click", function () {
-        redirectPage("start-construction");
-    });
-    document.getElementById("learn").addEventListener("click", function () {
-        redirectPage("game-learn");
-    });
-    document.getElementById("seeTopList").addEventListener("click", function () {
-        alert("See Top Ten List");
-    });
-}
 //imprimir puntaje
 let crewMoraleTag = document.getElementById("crewMorale");
 let subscribersTag = document.getElementById("subscribers");
@@ -884,8 +885,6 @@ if (section == 'ask-advice') {
     totalDiv.innerHTML = ` Total: <span style="text-decoration:line-through;">₩</span>${cartAmount}`
     balanceDiv.innerHTML = ` Your Balance: <span style="text-decoration:line-through;">₩</span>${remainigCredit}`
 }
-
-
 if (section == 'build-your-network' 
     || section == 'lesser-path' 
     || section == 'install-distribution-nodes' 
@@ -897,6 +896,7 @@ if (section == 'build-your-network'
     || section == 'connectivity-to-the-farms'
     || section == 'run-cnarcher'
     || section == 'run-cnmaestro'
+    || section == 'stats'
     ) {
     crewMoraleTag.innerText = crewMorale;
     subscribersTag.innerText = subscribers;
@@ -905,26 +905,3 @@ if (section == 'build-your-network'
     creditTag.innerText = remainigCredit;
     customerSatisfactionTag.innerText = customerSatisfaction;
 }
-console.log('RNG:' + RNG)
-//Mostrar Variables 
-console.log('Section: ' + section);
-console.log('Url: ' + domain);
-//Mostrar datos por consola del Local Storage
-console.log('>>>>>>>>>>Data in Local Storage<<<<<<<<<<')
-console.log('crewMorale:' + crewMorale)
-//console.log(typeof(crewMorale))
-console.log('subscribers:' + subscribers)
-//console.log(typeof(subscribers))
-console.log('daySpent:' + daySpent)
-//console.log(typeof(daySpent))
-console.log('inventory:' + inventory)
-//console.log(typeof(inventory))
-console.log('credit:' + credit)
-//console.log(typeof(credit))
-console.log('customerSatisfaction:' + customerSatisfaction)
-//console.log(typeof(customerSatisfaction))
-console.log('--------------------------')
-console.log('userName: ' + userName);
-console.log("region: " + region);
-console.log('character: ' + character);
-console.log('company: ' + userCompany);
