@@ -251,12 +251,17 @@ function redirectPage(path) {
     }
 }
 //Guardar usuario
-function saveUser() {
-    let userName = document.getElementById('userName').value;
-    if (!userName) {
+let userNameInput = document.getElementById('userName')
+
+if(userNameInput){
+    userNameInput.setAttribute('onblur','saveUser()')
+}
+
+function saveUser() {    
+    if (!userNameInput.value) {
         alert('Empty Value');
     } else {
-        localStorage.setItem('userName', userName);
+        localStorage.setItem('userName', userNameInput.value);
         redirectPage('select-team')
     }
 }
@@ -283,29 +288,51 @@ let character = localStorage.getItem("character");
 let userCompany = localStorage.getItem("userCompany");
 //Obtener e imprimir usuario
 let theUserTag = document.getElementById("theUser");
-if (userName && section == 'selectTeam') {
-    theUserTag.innerText = userName;
+
+if (theUserTag) {
+    theUserTag.innerHTML = `<b>${userName}</b>`;
+}
+let theDaysSpent = document.getElementById("theDaysSpent");
+
+if (theDaysSpent) {
+    theDaysSpent.innerHTML = `<b>${daySpent}</b>`;
+}
+let qtyTowers = document.getElementById("qtyTowers");
+
+if (qtyTowers) {
+    qtyTowers.innerHTML = `<b>${qtyTower}</b>`;
 }
 //poner fondos segun la region
 let screenTop = document.getElementById("screenTop");
 let screenBottom = document.getElementById("screenBottom");
+console.log(localStorage.getItem('region'))
 switch (region) {
+
     case "canada":
         screenTop.classList.add("screen_top_canada");
         screenBottom.classList.add("screen_bottom_canada");
-        break
+    break
+
     case "usa-west":
         screenTop.classList.add("screen_top_usa-west");
         screenBottom.classList.add("screen_bottom_usa-west");
-        break
+    break
+
     case "usa-east":
         screenTop.classList.add("screen_top_usa-east");
         screenBottom.classList.add("screen_bottom_usa-east");
-        break
+    break
+
     case "usa-mid-west":
         screenTop.classList.add("screen_top_usa-mid-west");
         screenBottom.classList.add("screen_bottom_usa-mid-west");
-        break
+    break
+
+    case "city":
+        screenTop.classList.add("screen_top_city");
+        screenBottom.classList.add("screen_bottom_factory");
+    break
+
     default:
         console.log('no region')
         screenTop.classList.add("screen_top_default");
@@ -450,7 +477,7 @@ document.addEventListener("keydown", function (event) {
                 redirectPage('leverage-existing-estructure')
                 break
             case 50:
-                redirectPage('build-your-own-towers')
+                redirectPage('start-tower')
                 break
             default:
                 console.log("invalid option")
@@ -700,6 +727,94 @@ document.addEventListener("keydown", function (event) {
                 console.log("invalid option")
         }
     }//Fin link planner
+    if(section == 'connectivity-to-the-farms'){
+        switch (event.keyCode) {
+            case 32:
+                localStorage.setItem('region','city')
+                redirectPage('village')
+                break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin connectivity-to-the-farms
+    if(section == 'village'){
+        switch (event.keyCode) {
+            case 49:
+                addDaySpent(3)
+                redirectPage('manual-cnarcher')
+            break
+            case 50:
+                addDaySpent(1)
+                addCustomerSatisfaction(10)
+                redirectPage('run-cnarcher')
+            break
+            case 51:
+                addDaySpent(1)
+                addCustomerSatisfaction(15)
+                redirectPage('run-cnmaestro')
+            break
+            case 52:
+                redirectPage('ask-wav-for-advice-2')
+            break
+            case 53:
+                substractCustomerSatisfaction(10)
+                redirectPage('great-job')
+            break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin village
+    if(section == 'manual-cnarcher'){
+        if(event.keyCode == 32){
+            redirectPage('ask-wav-for-advice-2')
+        }
+    }//Fin ask-wav-for-advice-2
+    if(section == 'ask-wav-for-advice-2'){
+        switch (event.keyCode) {
+            case 49:
+                addDaySpent(1)
+                addCustomerSatisfaction(15)
+                redirectPage('run-cnmaestro')
+            break
+            case 50:
+                addDaySpent(1)
+                addCustomerSatisfaction(10)
+                redirectPage('run-cnarcher')
+            break
+            default:
+                console.log("invalid option")
+        }
+    }//Fin ask-wav-for-advice-2
+    if(section == 'run-cnarcher' || section == 'run-cnmaestro'){
+        if(event.keyCode == 32){
+            redirectPage('nice')
+        }
+    }//fin run-cnarcher - run-cnmaestro
+    if(section == 'nice'){
+        if(event.keyCode == 32){
+            redirectPage('current-network-generates')
+        }
+    }//fin nice
+    if(section == 'current-network-generates'){
+        if(event.keyCode == 32){
+            redirectPage('end')
+        }
+    }//fin current-network-generates
+    if(section == 'great-job'){
+        if(event.keyCode == 32){
+            redirectPage('cng')
+        }
+    }//fin nice
+    if(section == 'cng'){
+        if(event.keyCode == 32){
+            redirectPage('missed-out')
+        }
+    }//fin cng
+    if(section == 'missed-out'){
+        if(event.keyCode == 32){
+            redirectPage('end')
+        }
+    }//fin missed-out
 })//Fin eventos del teclado
 //eventos clic
 if (section == 'gameHome') {
@@ -743,32 +858,34 @@ let totalDiv = document.getElementById('total');
 let balanceDiv = document.getElementById('balance');
 if (section == 'ask-advice') {
     if (qtyTower > 0) {
-        towerDiv.innerHTML = `${qtyTower} Tower: <span style="text-decoration:line-through;">W</span>${totalTower}`
+        towerDiv.innerHTML = `${qtyTower} Tower: <span style="text-decoration:line-through;">₩</span>${totalTower}`
     }
     if (qtyV5000 > 0) {
-        V5000Div.innerHTML = `${qtyV5000} V5000: <span style="text-decoration:line-through;">W</span>${totalV5000}`
+        V5000Div.innerHTML = `${qtyV5000} V5000: <span style="text-decoration:line-through;">₩</span>${totalV5000}`
     }
     if (qtyV3000 > 0) {
-        V3000Div.innerHTML = `${qtyV3000} V3000: <span style="text-decoration:line-through;">W</span>${totalV3000}`
+        V3000Div.innerHTML = `${qtyV3000} V3000: <span style="text-decoration:line-through;">₩</span>${totalV3000}`
     }
     if (qtyV1000 > 0) {
-        V1000Div.innerHTML = `${qtyV1000} V1000: <span style="text-decoration:line-through;">W</span>${totalV1000}`
+        V1000Div.innerHTML = `${qtyV1000} V1000: <span style="text-decoration:line-through;">₩</span>${totalV1000}`
     }
     if (qtyEPMP3000 > 0) {
-        EPMP3000Div.innerHTML = `${qtyEPMP3000} EPMP3000: <span style="text-decoration:line-through;">W</span>${totalEPMP3000}`
+        EPMP3000Div.innerHTML = `${qtyEPMP3000} EPMP3000: <span style="text-decoration:line-through;">₩</span>${totalEPMP3000}`
     }
     if (qtyEPMPforce300 > 0) {
-        EPMPForce300Div.innerHTML = `${qtyEPMPforce300} EPMPForce300: <span style="text-decoration:line-through;">W</span>${totalEPMPforce300}`
+        EPMPForce300Div.innerHTML = `${qtyEPMPforce300} EPMPForce300: <span style="text-decoration:line-through;">₩</span>${totalEPMPforce300}`
     }
     if (qtyOutfitTowerClimber > 0) {
-        otcDiv.innerHTML = `${qtyOutfitTowerClimber} Outfit Tower Climber: <span style="text-decoration:line-through;">W</span>${totalOutfitTowerClimber}`
+        otcDiv.innerHTML = `${qtyOutfitTowerClimber} Outfit Tower Climber: <span style="text-decoration:line-through;">₩</span>${totalOutfitTowerClimber}`
     }
     if (qtyOutfitHomeInstaller > 0) {
-        ohiDiv.innerHTML = `${qtyOutfitHomeInstaller} Outfit Home Installer: <span style="text-decoration:line-through;">W</span>${totalOutfitHomeInstaller}`
+        ohiDiv.innerHTML = `${qtyOutfitHomeInstaller} Outfit Home Installer: <span style="text-decoration:line-through;">₩</span>${totalOutfitHomeInstaller}`
     }
-    totalDiv.innerHTML = ` Total: <span style="text-decoration:line-through;">W</span>${cartAmount}`
-    balanceDiv.innerHTML = ` Your Balance: <span style="text-decoration:line-through;">W</span>${remainigCredit}`
+    totalDiv.innerHTML = ` Total: <span style="text-decoration:line-through;">₩</span>${cartAmount}`
+    balanceDiv.innerHTML = ` Your Balance: <span style="text-decoration:line-through;">₩</span>${remainigCredit}`
 }
+
+
 if (section == 'build-your-network' 
     || section == 'lesser-path' 
     || section == 'install-distribution-nodes' 
@@ -778,6 +895,8 @@ if (section == 'build-your-network'
     || section == 'towers-built'
     || section == 'punish-path'
     || section == 'connectivity-to-the-farms'
+    || section == 'run-cnarcher'
+    || section == 'run-cnmaestro'
     ) {
     crewMoraleTag.innerText = crewMorale;
     subscribersTag.innerText = subscribers;
