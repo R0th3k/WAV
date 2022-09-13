@@ -820,7 +820,6 @@ document.addEventListener("keydown", function (event) {
             break
             case 54:
             break
-
             default:
                 console.log("invalid option")
         }
@@ -862,31 +861,31 @@ let totalDiv = document.getElementById('total');
 let balanceDiv = document.getElementById('balance');
 if (section == 'ask-advice') {
     if (qtyTower > 0) {
-        towerDiv.innerHTML = `${qtyTower} Tower: <span style="text-decoration:line-through;">₩</span>${totalTower}`
+        towerDiv.innerHTML = `${qtyTower} Tower: <span style="text-decoration:line-through;">₩</span>${totalTower}`;
     }
     if (qtyV5000 > 0) {
-        V5000Div.innerHTML = `${qtyV5000} V5000: <span style="text-decoration:line-through;">₩</span>${totalV5000}`
+        V5000Div.innerHTML = `${qtyV5000} V5000: <span style="text-decoration:line-through;">₩</span>${totalV5000}`;
     }
     if (qtyV3000 > 0) {
-        V3000Div.innerHTML = `${qtyV3000} V3000: <span style="text-decoration:line-through;">₩</span>${totalV3000}`
+        V3000Div.innerHTML = `${qtyV3000} V3000: <span style="text-decoration:line-through;">₩</span>${totalV3000}`;
     }
     if (qtyV1000 > 0) {
-        V1000Div.innerHTML = `${qtyV1000} V1000: <span style="text-decoration:line-through;">₩</span>${totalV1000}`
+        V1000Div.innerHTML = `${qtyV1000} V1000: <span style="text-decoration:line-through;">₩</span>${totalV1000}`;
     }
     if (qtyEPMP3000 > 0) {
-        EPMP3000Div.innerHTML = `${qtyEPMP3000} EPMP3000: <span style="text-decoration:line-through;">₩</span>${totalEPMP3000}`
+        EPMP3000Div.innerHTML = `${qtyEPMP3000} EPMP3000: <span style="text-decoration:line-through;">₩</span>${totalEPMP3000}`;
     }
     if (qtyEPMPforce300 > 0) {
-        EPMPForce300Div.innerHTML = `${qtyEPMPforce300} EPMPForce300: <span style="text-decoration:line-through;">₩</span>${totalEPMPforce300}`
+        EPMPForce300Div.innerHTML = `${qtyEPMPforce300} EPMPForce300: <span style="text-decoration:line-through;">₩</span>${totalEPMPforce300}`;
     }
     if (qtyOutfitTowerClimber > 0) {
-        otcDiv.innerHTML = `${qtyOutfitTowerClimber} Outfit Tower Climber: <span style="text-decoration:line-through;">₩</span>${totalOutfitTowerClimber}`
+        otcDiv.innerHTML = `${qtyOutfitTowerClimber} Outfit Tower Climber: <span style="text-decoration:line-through;">₩</span>${totalOutfitTowerClimber}`;
     }
     if (qtyOutfitHomeInstaller > 0) {
-        ohiDiv.innerHTML = `${qtyOutfitHomeInstaller} Outfit Home Installer: <span style="text-decoration:line-through;">₩</span>${totalOutfitHomeInstaller}`
+        ohiDiv.innerHTML = `${qtyOutfitHomeInstaller} Outfit Home Installer: <span style="text-decoration:line-through;">₩</span>${totalOutfitHomeInstaller}`;
     }
-    totalDiv.innerHTML = ` Total: <span style="text-decoration:line-through;">₩</span>${cartAmount}`
-    balanceDiv.innerHTML = ` Your Balance: <span style="text-decoration:line-through;">₩</span>${remainigCredit}`
+    totalDiv.innerHTML = ` Total: <span style="text-decoration:line-through;">₩</span>${cartAmount}`;
+    balanceDiv.innerHTML = ` Your Balance: <span style="text-decoration:line-through;">₩</span>${remainigCredit}`;
 }
 if (section == 'build-your-network' 
     || section == 'lesser-path' 
@@ -908,27 +907,12 @@ if (section == 'build-your-network'
     creditTag.innerText = remainigCredit;
     customerSatisfactionTag.innerText = customerSatisfaction;
 }
-
 let purchasedProducts = document.getElementById('purchasedProducts')
-
 if(purchasedProducts){
-    purchasedProducts.innerHTML = `
-        <span>${(qtyTower > 0) ? qtyTower+' Tower': ''}</span>
-        <span>${(qtyV5000 > 0) ? qtyV5000+' V5000':''}</span>
-        <span>${(qtyV3000 > 0) ? qtyV3000+' V3000': ''}  </span>
-        <span>${(qtyV1000 > 0) ? qtyV1000+' V1000': ''}  </span>
-        <span>${(qtyEPMP3000 > 0)? qtyEPMP3000+' ePMP 3000' : ''}</span>
-        <span>${(qtyEPMPforce300 > 0)? qtyEPMPforce300+' ePMP Force 300' : ''}  </span>
-        <span>${(qtyOutfitTowerClimber > 0) ? qtyOutfitTowerClimber+' Outfit Tower Climber':''} </span>
-        <span>${(qtyOutfitHomeInstaller > 0)?+' Outfit Home Installer':''}</span>
-    `
+    purchasedProducts.innerHTML = `<span>${(qtyTower > 0) ? qtyTower+' Tower': ''}</span><span>${(qtyV5000 > 0) ? qtyV5000+' V5000':''}</span><span>${(qtyV3000 > 0) ? qtyV3000+' V3000': ''}  </span><span>${(qtyV1000 > 0) ? qtyV1000+' V1000': ''}  </span><span>${(qtyEPMP3000 > 0)? qtyEPMP3000+' ePMP 3000' : ''}</span><span>${(qtyEPMPforce300 > 0)? qtyEPMPforce300+' ePMP Force 300' : ''}  </span><span>${(qtyOutfitTowerClimber > 0) ? qtyOutfitTowerClimber+' Outfit Tower Climber':''} </span><span>${(qtyOutfitHomeInstaller > 0)?+' Outfit Home Installer':''}</span>`;
 }
-
-
 // let imgCanvas = document.getElementById('canvas').getContext('2d'),
 //     image = document.getElementById('image');
-
-
 // let cadena = `
 // ${userName}
 // ${crewMorale}
@@ -936,12 +920,9 @@ if(purchasedProducts){
 // ${daySpent}
 // ${customerSatisfaction}
 // `;
-
 // imgCanvas.canvas.width = imgCanvas.measureText(cadena).width;
 // imgCanvas.fillText(cadena, 0, 10);
 // image.src = imgCanvas.canvas.toDataURL();
-
-
 // function shareLI(){
 // let url = "holamundo.net";
 // let title = "Stats";
