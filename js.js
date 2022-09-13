@@ -806,6 +806,7 @@ document.addEventListener("keydown", function (event) {
     if(section == 'end'){
         switch (event.keyCode) {
             case 49:
+                shareLI()
             break
             case 50:
             break
@@ -815,14 +816,16 @@ document.addEventListener("keydown", function (event) {
                 redirectPage('stats')
             break
             case 53:
+                redirectPage('about-our-products')
             break
             case 54:
             break
+
             default:
                 console.log("invalid option")
         }
     }//Fin end
-    if(section == 'stats'){
+    if(section == 'stats' || section == 'about-our-products'){
         if(event.keyCode == 32){
             redirectPage('end')
         }
@@ -905,3 +908,43 @@ if (section == 'build-your-network'
     creditTag.innerText = remainigCredit;
     customerSatisfactionTag.innerText = customerSatisfaction;
 }
+
+let purchasedProducts = document.getElementById('purchasedProducts')
+
+if(purchasedProducts){
+    purchasedProducts.innerHTML = `
+        <span>${(qtyTower > 0) ? qtyTower+' Tower': ''}</span>
+        <span>${(qtyV5000 > 0) ? qtyV5000+' V5000':''}</span>
+        <span>${(qtyV3000 > 0) ? qtyV3000+' V3000': ''}  </span>
+        <span>${(qtyV1000 > 0) ? qtyV1000+' V1000': ''}  </span>
+        <span>${(qtyEPMP3000 > 0)? qtyEPMP3000+' ePMP 3000' : ''}</span>
+        <span>${(qtyEPMPforce300 > 0)? qtyEPMPforce300+' ePMP Force 300' : ''}  </span>
+        <span>${(qtyOutfitTowerClimber > 0) ? qtyOutfitTowerClimber+' Outfit Tower Climber':''} </span>
+        <span>${(qtyOutfitHomeInstaller > 0)?+' Outfit Home Installer':''}</span>
+    `
+}
+
+
+// let imgCanvas = document.getElementById('canvas').getContext('2d'),
+//     image = document.getElementById('image');
+
+
+// let cadena = `
+// ${userName}
+// ${crewMorale}
+// ${subscribers}
+// ${daySpent}
+// ${customerSatisfaction}
+// `;
+
+// imgCanvas.canvas.width = imgCanvas.measureText(cadena).width;
+// imgCanvas.fillText(cadena, 0, 10);
+// image.src = imgCanvas.canvas.toDataURL();
+
+
+// function shareLI(){
+// let url = "holamundo.net";
+// let title = "Stats";
+// let text = "My Stats On WAV Trail.";
+// window.open('http://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(url), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
+// }
