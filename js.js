@@ -303,24 +303,49 @@ let screenBottom = document.getElementById("screenBottom");
 console.log(localStorage.getItem('region'))
 switch (region) {
     case "canada":
-        screenTop.classList.add("screen_top_canada");
-        screenBottom.classList.add("screen_bottom_canada");
+        if(section == 'gameHome' || section == 'gameStartConstruction'){
+            screenTop.classList.add("screen_top_default");
+            screenBottom.classList.add("screen_bottom_default");
+        }else{
+            screenTop.classList.add("screen_top_canada");
+            screenBottom.classList.add("screen_bottom_canada");
+        }
     break
     case "usa-west":
-        screenTop.classList.add("screen_top_usa-west");
-        screenBottom.classList.add("screen_bottom_usa-west");
+        if(section == 'gameHome' || section == 'gameStartConstruction'){
+            screenTop.classList.add("screen_top_default");
+            screenBottom.classList.add("screen_bottom_default");
+        }else{
+            screenTop.classList.add("screen_top_usa-west");
+            screenBottom.classList.add("screen_bottom_usa-west");    
+        }
     break
     case "usa-east":
-        screenTop.classList.add("screen_top_usa-east");
-        screenBottom.classList.add("screen_bottom_usa-east");
+        if(section == 'gameHome' || section == 'gameStartConstruction'){
+            screenTop.classList.add("screen_top_default");
+            screenBottom.classList.add("screen_bottom_default");
+        }else{
+            screenTop.classList.add("screen_top_usa-east");
+            screenBottom.classList.add("screen_bottom_usa-east");  
+        }
     break
     case "usa-mid-west":
-        screenTop.classList.add("screen_top_usa-mid-west");
-        screenBottom.classList.add("screen_bottom_usa-mid-west");
+        if(section == 'gameHome' || section == 'gameStartConstruction'){
+            screenTop.classList.add("screen_top_default");
+            screenBottom.classList.add("screen_bottom_default");
+        }else{
+            screenTop.classList.add("screen_top_usa-mid-west");
+            screenBottom.classList.add("screen_bottom_usa-mid-west");   
+        }
     break
     case "city":
-        screenTop.classList.add("screen_top_city");
-        screenBottom.classList.add("screen_bottom_factory");
+        if(section == 'gameHome' || section == 'gameStartConstruction'){
+            screenTop.classList.add("screen_top_default");
+            screenBottom.classList.add("screen_bottom_default");
+        }else{
+            screenTop.classList.add("screen_top_city");
+            screenBottom.classList.add("screen_bottom_factory"); 
+        }
     break
     default:
         console.log('no region')
@@ -806,7 +831,7 @@ document.addEventListener("keydown", function (event) {
     if(section == 'end'){
         switch (event.keyCode) {
             case 49:
-                shareLI()
+                redirectPage('image-stats')
             break
             case 50:
             break
@@ -827,6 +852,18 @@ document.addEventListener("keydown", function (event) {
     if(section == 'stats' || section == 'about-our-products'){
         if(event.keyCode == 32){
             redirectPage('end')
+        }
+    }//fin missed-out
+    if(section == 'image-stats'){
+        switch (event.keyCode) {
+            case 49:
+                document.getElementById('download').click();
+            break
+            case 32:
+                redirectPage('end')
+            break
+            default:
+                console.log("invalid option")
         }
     }//fin missed-out
 })//Fin eventos del teclado
@@ -899,6 +936,7 @@ if (section == 'build-your-network'
     || section == 'run-cnarcher'
     || section == 'run-cnmaestro'
     || section == 'stats'
+    || section == 'image-stats'
     ) {
     crewMoraleTag.innerText = crewMorale;
     subscribersTag.innerText = subscribers;
@@ -910,6 +948,19 @@ if (section == 'build-your-network'
 let purchasedProducts = document.getElementById('purchasedProducts')
 if(purchasedProducts){
     purchasedProducts.innerHTML = `<span>${(qtyTower > 0) ? qtyTower+' Tower': ''}</span><span>${(qtyV5000 > 0) ? qtyV5000+' V5000':''}</span><span>${(qtyV3000 > 0) ? qtyV3000+' V3000': ''}  </span><span>${(qtyV1000 > 0) ? qtyV1000+' V1000': ''}  </span><span>${(qtyEPMP3000 > 0)? qtyEPMP3000+' ePMP 3000' : ''}</span><span>${(qtyEPMPforce300 > 0)? qtyEPMPforce300+' ePMP Force 300' : ''}  </span><span>${(qtyOutfitTowerClimber > 0) ? qtyOutfitTowerClimber+' Outfit Tower Climber':''} </span><span>${(qtyOutfitHomeInstaller > 0)?+' Outfit Home Installer':''}</span>`;
+}
+let statsTag = document.getElementById('stats');
+function downloadImage(){
+    html2canvas(statsTag, {
+        onrendered: function(canvas) {
+        let imageData = canvas.toDataURL("image/jpg");
+        let newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+        $("#download").attr("download", `image_${userName}.jpg`).attr("href", newData);
+    }
+});
+}
+if(section == 'image-stats'){
+    downloadImage();
 }
 // let imgCanvas = document.getElementById('canvas').getContext('2d'),
 //     image = document.getElementById('image');
