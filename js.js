@@ -103,11 +103,11 @@ if (localStorage.getItem('cartAmount') == null) {
 //let cartAmount = Number(localStorage.getItem('cartAmount'));
 //let cartAmount = Number(localStorage.getItem('totalTower')) + Number(localStorage.getItem('totalV5000') +Number(localStorage.getItem('totalV3000') +Number(localStorage.getItem('totalV1000') +Number(localStorage.getItem('totalEPMP3000') +Number(localStorage.getItem('totalEPMPforce300') +Number(localStorage.getItem('totalOutfitTowerClimber') +Number(localStorage.getItem('totalOutfitTowerClimber0') +);
 let cartAmount = Number(localStorage.getItem('totalTower')) + Number(localStorage.getItem('totalV5000')) + Number(localStorage.getItem('totalV3000')) + Number(localStorage.getItem('totalV1000')) + Number(localStorage.getItem('totalEPMP3000')) + Number(localStorage.getItem('totalEPMPforce300')) + Number(localStorage.getItem('totalOutfitTowerClimber')) + Number(localStorage.getItem('totalOutfitTowerClimber0'));
-console.log('xxx'+cartAmount)
+console.log('Cart amount '+cartAmount)
 
 //Remaining Credit
-if (localStorage.getItem('remainingCredit') == null) {
-
+if (localStorage.getItem('remainingCredit') == null && localStorage.getItem('region') != null) {
+  
     console.log('****')
     console.log(credit)
     console.log(cartAmount)
@@ -117,10 +117,13 @@ if (localStorage.getItem('remainingCredit') == null) {
     console.log('****')
 
 
-    localStorage.setItem('remainingCredit', (credit - cartAmount));
+    localStorage.setItem('remainingCredit', localStorage.getItem('credit') - localStorage.getItem('cartAmount'));
 }
+
 let remainigCredit = Number(localStorage.getItem('remainingCredit'));
-console.log('sss'+remainigCredit)
+
+console.log('remaing '+remainigCredit)
+
 function saveRemainingCredit() {
     localStorage.setItem('remainingCredit', (credit - cartAmount));
 }
@@ -541,6 +544,29 @@ if($city && localStorage.getItem('region') != null){
     }
 }
 
+//Mensaje por region/ciudad al seleccionar Tarea
+let $messageSelectTask = document.getElementById('messageSelectTask');
+
+if($messageSelectTask && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the fiber core in the middle of the village of Mapleton and need to connect -350 people across 190 homes and businesses with gigabit connectivity. The total village area is roughly 1 square mile. You have 45 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
+        break
+    
+        case 'usa-west':
+            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the fiber core in the middle of the Zuni Pueblo and need to connect ~1,000 people across 490 homes and businesses with gigabit connectivity. You have a 10GB fiber line and the total area needing coverage is spread out across roughly 300 square miles. You have 90 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
+        break
+        
+        case 'usa-east':
+            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at Oakdale School District offices after the city received CARES Act funding and were able to lease 1Gb fiber connections to each of the 3 schools in the area. You've been tasked with providing internet connectivity to the 28 unserved students at their homes to ensure remote learning capabilities. You'll also need to upgrade the school's network for when students are on-premise. You have 90-Days to complete the network buildout.</p><p class="game-font text-center"> What would you like to do?</p>`
+        break
+    
+        case 'usa-mid-west':
+            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the Wisco Cherry School District offices and need to connect a network to support
+            ~3,000 concurrent users across 5 campuses. The district is also requesting outdoor Wi-Fi capabilities to allow students to connect within the campus parking lots. Each campus has a leased 5GB fiber back bone to the premise. You have 90 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
+        break
+    }
+}
 
 //detectar eventos del teclado
 document.addEventListener("keydown", function (event) {
@@ -604,28 +630,28 @@ document.addEventListener("keydown", function (event) {
         switch (event.keyCode) {
             case 49:
                 console.log("memberCrew1")
-                saveMembers()
                 localStorage.setItem('character', '1')
                 redirectPage('name-company')
                 break
             case 50:
                 console.log("memberCrew2")
-                saveMembers()
                 localStorage.setItem('character', '2')
                 redirectPage('name-company')
                 break
             case 51:
                 console.log("memberCrew3")
-                saveMembers()
                 localStorage.setItem('character', '3')
                 redirectPage('name-company')
                 break
             case 52:
                 console.log("memberCrew4")
-                saveMembers()
                 localStorage.setItem('character', '4')
                 redirectPage('name-company')
                 break
+            case 13:
+                saveMembers();
+                alert('Saved');
+            break;
             default:
                 console.log("invalid option")
         }
