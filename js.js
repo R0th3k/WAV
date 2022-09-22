@@ -47,11 +47,39 @@ function substractInventory(p) {
     localStorage.setItem('inventory', inventory - p);
 }
 //credit
-if (localStorage.getItem('credit') == null) {
-    localStorage.setItem('credit', 2500);
+if ( localStorage.getItem('region') != null) {   
+    switch(localStorage.getItem('region')){
+        case 'canada':
+            
+            if(localStorage.getItem('credit') == null){
+                localStorage.setItem('credit', 2500);
+            }
+        break
+    
+        case 'usa-west':
+            if(localStorage.getItem('credit') == null){
+                localStorage.setItem('credit', 40000);
+            }
+            
+        break
+        
+        case 'usa-east':
+            if(localStorage.getItem('credit') == null){
+                localStorage.setItem('credit', 3000);
+            }
+            
+        break
+    
+        case 'usa-mid-west':
+            if(localStorage.getItem('credit') == null){
+                localStorage.setItem('credit', 5500);
+            }
+            
+        break
+    }
 }
 let credit = Number(localStorage.getItem('credit'));
-// console.log(credit)
+console.log('XXX'+credit)
 // console.log(typeof(credit))
 function addCredit(p) {
     localStorage.setItem('credit', credit + p);
@@ -70,26 +98,44 @@ function subtractCredit(p) {
 if (localStorage.getItem('cartAmount') == null) {
     localStorage.setItem('cartAmount', 0);
 }
+
 //let amount = totalTower + totalV5000 + totalV3000 + totalV1000 + totalEPMP3000 + totalEPMPforce300 + totalOutfitTowerClimber + totalOutfitTowerClimber;
 //let cartAmount = Number(localStorage.getItem('cartAmount'));
 //let cartAmount = Number(localStorage.getItem('totalTower')) + Number(localStorage.getItem('totalV5000') +Number(localStorage.getItem('totalV3000') +Number(localStorage.getItem('totalV1000') +Number(localStorage.getItem('totalEPMP3000') +Number(localStorage.getItem('totalEPMPforce300') +Number(localStorage.getItem('totalOutfitTowerClimber') +Number(localStorage.getItem('totalOutfitTowerClimber0') +);
 let cartAmount = Number(localStorage.getItem('totalTower')) + Number(localStorage.getItem('totalV5000')) + Number(localStorage.getItem('totalV3000')) + Number(localStorage.getItem('totalV1000')) + Number(localStorage.getItem('totalEPMP3000')) + Number(localStorage.getItem('totalEPMPforce300')) + Number(localStorage.getItem('totalOutfitTowerClimber')) + Number(localStorage.getItem('totalOutfitTowerClimber0'));
+console.log('xxx'+cartAmount)
+
 //Remaining Credit
 if (localStorage.getItem('remainingCredit') == null) {
-    localStorage.setItem('remainingCredit', credit - cartAmount);
+
+    console.log('****')
+    console.log(credit)
+    console.log(cartAmount)
+    console.log('****')
+    console.log(credit - cartAmount)
+    console.log(localStorage.getItem('credit') - localStorage.getItem('cartAmount'))
+    console.log('****')
+
+
+    localStorage.setItem('remainingCredit', (credit - cartAmount));
 }
 let remainigCredit = Number(localStorage.getItem('remainingCredit'));
+console.log('sss'+remainigCredit)
 function saveRemainingCredit() {
-    localStorage.setItem('remainingCredit', credit - cartAmount);
+    localStorage.setItem('remainingCredit', (credit - cartAmount));
 }
 function substractRemainingCredit(p) {
     localStorage.setItem('remainingCredit', remainigCredit - p);
 }
+
 console.log('Amount:' + cartAmount)
 console.log('remainig credit: ' + remainigCredit)
+
 function saveCartAmount() {
     localStorage.setItem('cartAmount', cartAmount);
 }
+
+
 //customerSatisfaction
 if (localStorage.getItem('customerSatisfaction') == null) {
     localStorage.setItem('customerSatisfaction', 0);
@@ -204,6 +250,9 @@ let priceOutfitTowerClimber = 36;
 if (localStorage.getItem('qtyOutfitTowerClimber') == null) {
     localStorage.setItem('qtyOutfitTowerClimber', 0);
 }
+
+
+
 let qtyOutfitTowerClimber = Number(localStorage.getItem('qtyOutfitTowerClimber'));
 function saveOutfitTowerClimber(p) {
     let qty = qtyOutfitTowerClimber + p;
@@ -214,6 +263,7 @@ function saveOutfitTowerClimber(p) {
 if (localStorage.getItem('totalOutfitTowerClimber') == null) {
     localStorage.setItem('totalOutfitTowerClimber', 0);
 }
+
 let totalOutfitTowerClimber = Number(localStorage.getItem('totalOutfitTowerClimber'));
 //OutfitHomeInstaller
 let priceOutfitHomeInstaller = 10;
@@ -227,6 +277,8 @@ function saveOutfitHomeInstaller(p) {
     localStorage.setItem('totalOutfitHomeInstaller', qty * priceOutfitHomeInstaller);
     //refreshPage();
 }
+
+
 if (localStorage.getItem('totalOutfitHomeInstaller') == null) {
     localStorage.setItem('totalOutfitHomeInstaller', 0);
 }
@@ -300,13 +352,18 @@ if (qtyTowers) {
 //poner fondos segun la region
 let screenTop = document.getElementById("screenTop");
 let screenBottom = document.getElementById("screenBottom");
-console.log(localStorage.getItem('region'))
+
 switch (region) {
     case "canada":
         if(section == 'gameHome' || section == 'gameStartConstruction'){
             screenTop.classList.add("screen_top_default");
             screenBottom.classList.add("screen_bottom_default");
-        }else{
+        }
+        // else if(section == 'emptyLot'){
+        //     screenTop.classList.add("screen_top_city");
+        //     screenBottom.classList.add("screen_bottom_factory");
+        // }
+        else{
             screenTop.classList.add("screen_top_canada");
             screenBottom.classList.add("screen_bottom_canada");
         }
@@ -315,9 +372,14 @@ switch (region) {
         if(section == 'gameHome' || section == 'gameStartConstruction'){
             screenTop.classList.add("screen_top_default");
             screenBottom.classList.add("screen_bottom_default");
-        }else{
-            screenTop.classList.add("screen_top_usa-west");
-            screenBottom.classList.add("screen_bottom_usa-west");    
+        }
+        // else if(section == 'emptyLot'){
+        //     screenTop.classList.add("screen_top_city");
+        //     screenBottom.classList.add("screen_bottom_factory");
+        // }
+        else{
+            screenTop.classList.add("screen_top_canyon");
+            screenBottom.classList.add("screen_bottom_canyon");    
         }
     break
     case "usa-east":
@@ -356,16 +418,16 @@ switch (region) {
 let characterImgTag = document.getElementById("character");
 if (characterImgTag) {
     switch (character) {
-        case "Marcus":
+        case "1":
             characterImgTag.setAttribute('src', 'https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/6307b77018bcfd036f7911ac_1.png');
             break
-        case "Conan":
+        case "2":
             characterImgTag.setAttribute('src', 'https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/6307b770595b03ebd249ce4e_2.png');
             break
-        case "Dominic":
+        case "3":
             characterImgTag.setAttribute('src', 'https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/6307b7702ff74a22d8ffc0a5_3.png');
             break
-        case "Miranda":
+        case "4":
             characterImgTag.setAttribute('src', 'https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/6307b7701142ab3c6a177928_4.png');
             break
         default:
@@ -373,6 +435,113 @@ if (characterImgTag) {
             characterImgTag.setAttribute('src', 'https://uploads-ssl.webflow.com/62fbe0aea45a87eebed65ef5/6307b77018bcfd036f7911ac_1.png');
     }
 }
+//guardar nombres de personajes
+
+
+let $memberCrew1 = document.getElementById('memberCrewA')
+let $memberCrew2 = document.getElementById('memberCrewB')
+let $memberCrew3 = document.getElementById('memberCrewC')
+let $memberCrew4 = document.getElementById('memberCrewD')
+
+// if($memberCrew1){
+//     $memberCrew1.setAttribute('onblur','saveMembers()')
+// }
+function saveMembers() {    
+    if (!$memberCrew1.value ) {
+        if(localStorage.getItem('memberCrew1') == ''){
+            localStorage.setItem('memberCrew1', 'Member Crew 1');
+        } 
+    } else {
+        localStorage.setItem('memberCrew1', $memberCrew1.value);  
+    }
+    if (!$memberCrew2.value) {
+        if(localStorage.getItem('memberCrew2') == ''){
+            localStorage.setItem('memberCrew2', 'Member Crew 2');
+        } 
+    } else {
+        localStorage.setItem('memberCrew2', $memberCrew2.value);  
+    }
+    if (!$memberCrew3.value) {
+        if(localStorage.getItem('memberCrew3') == ''){
+            localStorage.setItem('memberCrew3', 'Member Crew 3');
+        }
+    } else {
+        localStorage.setItem('memberCrew3', $memberCrew3.value);  
+    }
+    if (!$memberCrew4.value) {
+        if(localStorage.getItem('memberCrew4') == ''){
+            localStorage.setItem('memberCrew4', 'Member Crew 4');
+        }
+    } else {
+        localStorage.setItem('memberCrew4', $memberCrew4.value);  
+    }
+}
+
+//imprimir nombre del miembro
+let crewMemberTag = document.getElementById("crewMember");
+if (crewMemberTag) {
+    switch (character) {
+        case "1":
+            crewMemberTag.innerHTML = localStorage.getItem('memberCrew1')
+            break
+        case "2":
+            crewMemberTag.innerHTML = localStorage.getItem('memberCrew2')
+            break
+        case "3":
+            crewMemberTag.innerHTML = localStorage.getItem('memberCrew3')
+            break
+        case "4":
+            crewMemberTag.innerHTML = localStorage.getItem('memberCrew4')
+            break
+        default:
+           
+    }
+}
+let crewMember1Tag = document.getElementById("crewMember1");
+if(crewMember1Tag){
+    crewMember1Tag.innerHTML = localStorage.getItem('memberCrew1');
+}
+
+let crewMember2Tag = document.getElementById("crewMember2");
+if(crewMember2Tag){
+    crewMember2Tag.innerHTML = localStorage.getItem('memberCrew2');
+}
+
+let crewMember3Tag = document.getElementById("crewMember3");
+if(crewMember3Tag){
+    crewMember3Tag.innerHTML = localStorage.getItem('memberCrew3');
+}
+
+let crewMember4Tag = document.getElementById("crewMember4");
+if(crewMember4Tag){
+    crewMember4Tag.innerHTML = localStorage.getItem('memberCrew4');
+}
+
+//Imprimir ciudad correspondiente a la region
+let $city = document.getElementById('city')
+console.log(region)
+
+if($city && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+            $city.innerHTML = 'CITY of Mapleton'
+        break
+    
+        case 'usa-west':
+            $city.innerHTML = 'Zuni Pueblo'
+        break
+        
+        case 'usa-east':
+            $city.innerHTML = 'Oakdale School District'
+        break
+    
+        case 'usa-mid-west':
+            $city.innerHTML = 'Wisco Cherry School District'
+        break
+    }
+}
+
+
 //detectar eventos del teclado
 document.addEventListener("keydown", function (event) {
     if (event.altKey && String.fromCharCode(event.keyCode) == 'R') {
@@ -407,7 +576,7 @@ document.addEventListener("keydown", function (event) {
                 break
             case 50:
                 localStorage.setItem('region', 'usa-west')
-                alert('USA West')
+                redirectPage('enter-name');
                 break
             case 51:
                 localStorage.setItem('region', 'usa-east')
@@ -421,26 +590,40 @@ document.addEventListener("keydown", function (event) {
                 console.log("invalid option")
         }
     }//fin gameStartConstruction
+    if (section == 'enterName') {
+        if (event.keyCode == 13) {
+            saveUser();
+        }
+    }//Fin enterName
+    if (section == 'nameCompany') {
+        if (event.keyCode == 13) {
+            saveCompany();
+        }
+    }//Fin enterCompany
     if (section == 'selectTeam') {
         switch (event.keyCode) {
             case 49:
-                console.log("Marcus")
-                localStorage.setItem('character', 'Marcus')
+                console.log("memberCrew1")
+                saveMembers()
+                localStorage.setItem('character', '1')
                 redirectPage('name-company')
                 break
             case 50:
-                console.log("Conan")
-                localStorage.setItem('character', 'Conan')
+                console.log("memberCrew2")
+                saveMembers()
+                localStorage.setItem('character', '2')
                 redirectPage('name-company')
                 break
             case 51:
-                console.log("Dominic")
-                localStorage.setItem('character', 'Dominic')
+                console.log("memberCrew3")
+                saveMembers()
+                localStorage.setItem('character', '3')
                 redirectPage('name-company')
                 break
             case 52:
-                console.log("Miranda")
-                localStorage.setItem('character', 'Miranda')
+                console.log("memberCrew4")
+                saveMembers()
+                localStorage.setItem('character', '4')
                 redirectPage('name-company')
                 break
             default:
@@ -505,11 +688,13 @@ document.addEventListener("keydown", function (event) {
     }//Fin leverageExistingEstructure
     //Purchase
     if (section == 'purchase') {
+        
         switch (event.keyCode) {
             case 49://add Tower
-                refreshPage();
+                
                 if (cartAmount <= credit && remainigCredit >= priceTower) {
                     saveTower(1);
+                    refreshPage();
                 }
                 break
             case 50://add V5000
@@ -810,7 +995,7 @@ document.addEventListener("keydown", function (event) {
     }//fin nice
     if(section == 'current-network-generates'){
         if(event.keyCode == 32){
-            redirectPage('end')
+            redirectPage('missed-out')
         }
     }//fin current-network-generates
     if(section == 'great-job'){
@@ -825,9 +1010,15 @@ document.addEventListener("keydown", function (event) {
     }//fin cng
     if(section == 'missed-out'){
         if(event.keyCode == 32){
-            redirectPage('end')
+            redirectPage('witty-ending')
         }
     }//fin missed-out
+    if(section == 'witty-ending'){
+        if(event.keyCode == 32){
+            redirectPage('end')
+        }
+    }//fin witty-ending
+
     if(section == 'end'){
         switch (event.keyCode) {
             case 49:
@@ -886,6 +1077,26 @@ if (section == 'cityDetails') {
     creditTag.innerText = credit;
     customerSatisfactionTag.innerText = customerSatisfaction;
 }
+
+
+let purchaseDiv = document.getElementById('purchase');
+
+if(purchaseDiv){
+    purchaseDiv.innerHTML = `
+    <div class="game-font text-center">
+    <p>[1] Tower ₩${priceTower} ${(qtyTower > 0) ? '--- ' + qtyTower : ''}</p>
+    <p>[2] V5000 --- ₩${priceV5000} ${ (qtyV5000 > 0) ? '--- ' +qtyV5000: '' }</p>
+    <p>[3] V3000 --- ₩${priceV3000} ${(qtyV3000 > 0)?'--- '+qtyV3000:''}</p>
+    <p>[4] V1000 --- ₩${priceV1000} ${(qtyV1000 > 0)?'--- '+qtyV1000:''}</p>
+    <p>[5] ePMP 3000 --- ₩${priceEPMP3000} ${(qtyEPMP3000 > 0)?'--- '+qtyEPMP3000:''}</p>
+    <p>[6] ePMP Force 300 --- ₩${priceEPMPforce300} ${(qtyEPMPforce300 > 0)?'--- '+qtyEPMPforce300:''}</p>
+    <p>[7] Outfit Tower Climber ----- ₩${priceOutfitTowerClimber} ${(qtyOutfitTowerClimber > 0)?'--- '+qtyOutfitTowerClimber:''}</p>
+    <p>[8] Outfit Home Installer ₩${priceOutfitHomeInstaller} ${(qtyOutfitHomeInstaller > 0)?'--- '+qtyOutfitHomeInstaller:''}</p>
+    <p>[9] Ask Advice-------₩0</p>
+    <p>Amount: ₩${cartAmount}</p>
+    </div>`;
+}
+
 let towerDiv = document.getElementById('towerDiv');
 let V5000Div = document.getElementById('V5000Div');
 let V3000Div = document.getElementById('V3000Div');
