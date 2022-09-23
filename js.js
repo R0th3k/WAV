@@ -1,6 +1,8 @@
 //guardar en una constante el dominio actual
 let url = window.location;
 const domain = url.origin + "/";
+//Region
+let region = localStorage.getItem("region");
 //Contadores
 // CrewMorale
 if (localStorage.getItem('crewMorale') == null) {
@@ -102,7 +104,28 @@ if (localStorage.getItem('cartAmount') == null) {
 //let amount = totalTower + totalV5000 + totalV3000 + totalV1000 + totalEPMP3000 + totalEPMPforce300 + totalOutfitTowerClimber + totalOutfitTowerClimber;
 //let cartAmount = Number(localStorage.getItem('cartAmount'));
 //let cartAmount = Number(localStorage.getItem('totalTower')) + Number(localStorage.getItem('totalV5000') +Number(localStorage.getItem('totalV3000') +Number(localStorage.getItem('totalV1000') +Number(localStorage.getItem('totalEPMP3000') +Number(localStorage.getItem('totalEPMPforce300') +Number(localStorage.getItem('totalOutfitTowerClimber') +Number(localStorage.getItem('totalOutfitTowerClimber0') +);
-let cartAmount = Number(localStorage.getItem('totalTower')) + Number(localStorage.getItem('totalV5000')) + Number(localStorage.getItem('totalV3000')) + Number(localStorage.getItem('totalV1000')) + Number(localStorage.getItem('totalEPMP3000')) + Number(localStorage.getItem('totalEPMPforce300')) + Number(localStorage.getItem('totalOutfitTowerClimber')) + Number(localStorage.getItem('totalOutfitTowerClimber0'));
+
+let cartAmount;
+if(region == 'canada' && region != null){
+    cartAmount = 
+    Number(localStorage.getItem('totalTower')) + 
+    Number(localStorage.getItem('totalV5000')) + 
+    Number(localStorage.getItem('totalV3000')) + 
+    Number(localStorage.getItem('totalV1000')) + 
+    Number(localStorage.getItem('totalEPMP3000')) + 
+    Number(localStorage.getItem('totalEPMPforce300')) + 
+    Number(localStorage.getItem('totalOutfitTowerClimber')) + 
+    Number(localStorage.getItem('totalOutfitTowerClimber0'));
+}
+if(region == 'usa-west' && region != null){
+    cartAmount = 
+    Number(localStorage.getItem('totalTower')) + 
+    Number(localStorage.getItem('totalPtp850')) + 
+    Number(localStorage.getItem('totalCnMedusa')) + 
+    Number(localStorage.getItem('totalPmp450b')) + 
+    Number(localStorage.getItem('totalCnPilot')); 
+}
+
 console.log('Cart amount '+cartAmount)
 
 //Remaining Credit
@@ -150,142 +173,8 @@ function addCustomerSatisfaction(p) {
 function substractCustomerSatisfaction(p) {
     localStorage.setItem('customerSatisfaction', customerSatisfaction - p);
 }
-//Products
-//tower
-let priceTower = 200;
-if (localStorage.getItem('qtyTower') == null) {
-    localStorage.setItem('qtyTower', 0);
-}
-let qtyTower = Number(localStorage.getItem('qtyTower'));
-function saveTower(p) {
-    let qty = qtyTower + p;
-    localStorage.setItem('qtyTower', qty);
-    localStorage.setItem('totalTower', qty * priceTower);
-    saveRemainingCredit();
-    refreshPage();
-}
-if (localStorage.getItem('totalTower') == null) {
-    localStorage.setItem('totalTower', 0);
-}
-let totalTower = Number(localStorage.getItem('totalTower'));
-//V5000
-let priceV5000 = 30;
-if (localStorage.getItem('qtyV5000') == null) {
-    localStorage.setItem('qtyV5000', 0);
-}
-let qtyV5000 = Number(localStorage.getItem('qtyV5000'));
-function saveV5000(p) {
-    let qty = qtyV5000 + p;
-    localStorage.setItem('qtyV5000', qty);
-    localStorage.setItem('totalV5000', qty * priceV5000);
-    //refreshPage();
-}
-if (localStorage.getItem('totalV5000') == null) {
-    localStorage.setItem('totalV5000', 0);
-}
-let totalV5000 = Number(localStorage.getItem('totalV5000'));
-//V3000
-let priceV3000 = 14;
-if (localStorage.getItem('qtyV3000') == null) {
-    localStorage.setItem('qtyV3000', 0);
-}
-let qtyV3000 = Number(localStorage.getItem('qtyV3000'));
-function saveV3000(p) {
-    let qty = qtyV3000 + p;
-    localStorage.setItem('qtyV3000', qty);
-    localStorage.setItem('totalV3000', qty * priceV3000);
-    //refreshPage();
-}
-if (localStorage.getItem('totalV3000') == null) {
-    localStorage.setItem('totalV3000', 0);
-}
-let totalV3000 = Number(localStorage.getItem('totalV3000'));
-//V1000
-let priceV1000 = 6;
-if (localStorage.getItem('qtyV1000') == null) {
-    localStorage.setItem('qtyV1000', 0);
-}
-let qtyV1000 = Number(localStorage.getItem('qtyV1000'));
-function saveV1000(p) {
-    let qty = qtyV1000 + p;
-    localStorage.setItem('qtyV1000', qty);
-    localStorage.setItem('totalV1000', qty * priceV1000);
-    //refreshPage();
-}
-if (localStorage.getItem('totalV1000') == null) {
-    localStorage.setItem('totalV1000', 0);
-}
-let totalV1000 = Number(localStorage.getItem('totalV1000'));
-//EPMP3000
-let priceEPMP3000 = 30;
-if (localStorage.getItem('qtyEPMP3000') == null) {
-    localStorage.setItem('qtyEPMP3000', 0);
-}
-let qtyEPMP3000 = Number(localStorage.getItem('qtyEPMP3000'));
-function saveEPMP3000(p) {
-    let qty = qtyEPMP3000 + p;
-    localStorage.setItem('qtyEPMP3000', qty);
-    localStorage.setItem('totalEPMP3000', qty * priceEPMP3000);
-    //refreshPage();
-}
-if (localStorage.getItem('totalEPMP3000') == null) {
-    localStorage.setItem('totalEPMP3000', 0);
-}
-let totalEPMP3000 = Number(localStorage.getItem('totalEPMP3000'));
-//EPMPforce300
-let priceEPMPforce300 = 6;
-if (localStorage.getItem('qtyEPMPforce300') == null) {
-    localStorage.setItem('qtyEPMPforce300', 0);
-}
-let qtyEPMPforce300 = Number(localStorage.getItem('qtyEPMPforce300'));
-function saveEPMPForce300(p) {
-    let qty = qtyEPMPforce300 + p;
-    localStorage.setItem('qtyEPMPforce300', qty);
-    localStorage.setItem('totalEPMPforce300', qty * priceEPMPforce300);
-    //refreshPage();
-}
-if (localStorage.getItem('totalEPMPforce300') == null) {
-    localStorage.setItem('totalEPMPforce300', 0);
-}
-let totalEPMPforce300 = Number(localStorage.getItem('totalEPMPforce300'));
-//OutfitTowerClimber
-let priceOutfitTowerClimber = 36;
-if (localStorage.getItem('qtyOutfitTowerClimber') == null) {
-    localStorage.setItem('qtyOutfitTowerClimber', 0);
-}
 
 
-
-let qtyOutfitTowerClimber = Number(localStorage.getItem('qtyOutfitTowerClimber'));
-function saveOutfitTowerClimber(p) {
-    let qty = qtyOutfitTowerClimber + p;
-    localStorage.setItem('qtyOutfitTowerClimber', qty);
-    localStorage.setItem('totalOutfitTowerClimber', qty * priceOutfitTowerClimber);
-    //refreshPage();
-}
-if (localStorage.getItem('totalOutfitTowerClimber') == null) {
-    localStorage.setItem('totalOutfitTowerClimber', 0);
-}
-
-let totalOutfitTowerClimber = Number(localStorage.getItem('totalOutfitTowerClimber'));
-//OutfitHomeInstaller
-let priceOutfitHomeInstaller = 10;
-if (localStorage.getItem('qtyOutfitHomeInstaller') == null) {
-    localStorage.setItem('qtyOutfitHomeInstaller', 0);
-}
-let qtyOutfitHomeInstaller = Number(localStorage.getItem('qtyOutfitHomeInstaller'));
-function saveOutfitHomeInstaller(p) {
-    let qty = qtyOutfitHomeInstaller + p;
-    localStorage.setItem('qtyOutfitHomeInstaller', qty);
-    localStorage.setItem('totalOutfitHomeInstaller', qty * priceOutfitHomeInstaller);
-    //refreshPage();
-}
-
-
-if (localStorage.getItem('totalOutfitHomeInstaller') == null) {
-    localStorage.setItem('totalOutfitHomeInstaller', 0);
-}
-let totalOutfitHomeInstaller = Number(localStorage.getItem('totalOutfitHomeInstaller'));
 //Generar Numero Aletorio entre 0 y 1
 function randomNumberGenerator() {
     let y = Math.random();
@@ -333,8 +222,303 @@ function refreshPage() {
 //obtener datos desde local Storage
 //userName
 let userName = localStorage.getItem("userName");
-//Region
-let region = localStorage.getItem("region");
+
+
+//Precios Productos
+let priceTower = 200;
+let priceV5000 = 30;
+let priceV3000 = 14;
+let priceV1000 = 6;
+let priceEPMP3000 = 30;
+let priceEPMPforce300 = 6;
+let priceOutfitTowerClimber = 36;
+let priceOutfitHomeInstaller;
+let pricePtp850 = 84;
+let priceCnMedusa = 164;
+let pricePmp450b = 8;
+let priceCnPilot = 2;
+//Cantidades
+let qtyTower;
+let qtyV5000
+let qtyV3000
+let qtyV1000
+let qtyEPMP3000
+let qtyEPMPforce300
+let qtyOutfitTowerClimber
+let qtyOutfitHomeInstaller
+let qtyPtp850
+let qtyCnMedusa
+let qtyPmp450b
+let qtyCnPilot
+//totales
+let totalTower
+let totalV5000
+let totalV3000
+let totalV1000
+let totalEPMP3000
+let totalEPMPforce300
+let totalOutfitTowerClimber
+let totalOutfitHomeInstaller
+let totalPtp850
+let totalCnMedusa
+let totalPmp450b
+let totalCnPilot
+
+//---------------------------//Productos Canada// -----------------------------//
+if(region != null){
+    if(region == 'canada'){
+        //tower
+        
+        if (localStorage.getItem('qtyTower') == null) {
+            localStorage.setItem('qtyTower', 0);
+        }
+        qtyTower = Number(localStorage.getItem('qtyTower'));
+        function saveTower(p) {
+            let qty = qtyTower + p;
+            localStorage.setItem('qtyTower', qty);
+            localStorage.setItem('totalTower', qty * priceTower);
+            saveRemainingCredit();
+            refreshPage();
+        }
+        if (localStorage.getItem('totalTower') == null) {
+            localStorage.setItem('totalTower', 0);
+        }
+        totalTower = Number(localStorage.getItem('totalTower'));
+        //V5000
+        
+        if (localStorage.getItem('qtyV5000') == null) {
+            localStorage.setItem('qtyV5000', 0);
+        }
+        qtyV5000 = Number(localStorage.getItem('qtyV5000'));
+        function saveV5000(p) {
+            let qty = qtyV5000 + p;
+            localStorage.setItem('qtyV5000', qty);
+            localStorage.setItem('totalV5000', qty * priceV5000);
+            //refreshPage();
+        }
+        if (localStorage.getItem('totalV5000') == null) {
+            localStorage.setItem('totalV5000', 0);
+        }
+        totalV5000 = Number(localStorage.getItem('totalV5000'));
+        //V3000
+        
+        if (localStorage.getItem('qtyV3000') == null) {
+            localStorage.setItem('qtyV3000', 0);
+        }
+        qtyV3000 = Number(localStorage.getItem('qtyV3000'));
+        function saveV3000(p) {
+            let qty = qtyV3000 + p;
+            localStorage.setItem('qtyV3000', qty);
+            localStorage.setItem('totalV3000', qty * priceV3000);
+            //refreshPage();
+        }
+        if (localStorage.getItem('totalV3000') == null) {
+            localStorage.setItem('totalV3000', 0);
+        }
+        totalV3000 = Number(localStorage.getItem('totalV3000'));
+        //V1000
+        
+        if (localStorage.getItem('qtyV1000') == null) {
+            localStorage.setItem('qtyV1000', 0);
+        }
+        qtyV1000 = Number(localStorage.getItem('qtyV1000'));
+        function saveV1000(p) {
+            let qty = qtyV1000 + p;
+            localStorage.setItem('qtyV1000', qty);
+            localStorage.setItem('totalV1000', qty * priceV1000);
+            //refreshPage();
+        }
+        if (localStorage.getItem('totalV1000') == null) {
+            localStorage.setItem('totalV1000', 0);
+        }
+        totalV1000 = Number(localStorage.getItem('totalV1000'));
+        //EPMP3000
+        
+        if (localStorage.getItem('qtyEPMP3000') == null) {
+            localStorage.setItem('qtyEPMP3000', 0);
+        }
+        qtyEPMP3000 = Number(localStorage.getItem('qtyEPMP3000'));
+        function saveEPMP3000(p) {
+            let qty = qtyEPMP3000 + p;
+            localStorage.setItem('qtyEPMP3000', qty);
+            localStorage.setItem('totalEPMP3000', qty * priceEPMP3000);
+            //refreshPage();
+        }
+        if (localStorage.getItem('totalEPMP3000') == null) {
+            localStorage.setItem('totalEPMP3000', 0);
+        }
+        totalEPMP3000 = Number(localStorage.getItem('totalEPMP3000'));
+        //EPMPforce300
+        
+        if (localStorage.getItem('qtyEPMPforce300') == null) {
+            localStorage.setItem('qtyEPMPforce300', 0);
+        }
+        qtyEPMPforce300 = Number(localStorage.getItem('qtyEPMPforce300'));
+        function saveEPMPForce300(p) {
+            let qty = qtyEPMPforce300 + p;
+            localStorage.setItem('qtyEPMPforce300', qty);
+            localStorage.setItem('totalEPMPforce300', qty * priceEPMPforce300);
+            //refreshPage();
+        }
+        if (localStorage.getItem('totalEPMPforce300') == null) {
+            localStorage.setItem('totalEPMPforce300', 0);
+        }
+        totalEPMPforce300 = Number(localStorage.getItem('totalEPMPforce300'));
+        //OutfitTowerClimb    
+        priceOutfitTowerClimber = 36;
+        if (localStorage.getItem('qtyOutfitTowerClimber') == null) {
+            localStorage.setItem('qtyOutfitTowerClimber', 0);
+        }
+
+        qtyOutfitTowerClimber = Number(localStorage.getItem('qtyOutfitTowerClimber'));
+        function saveOutfitTowerClimber(p) {
+            let qty = qtyOutfitTowerClimber + p;
+            localStorage.setItem('qtyOutfitTowerClimber', qty);
+            localStorage.setItem('totalOutfitTowerClimber', qty * priceOutfitTowerClimber);
+            //refreshPage();
+        }
+        if (localStorage.getItem('totalOutfitTowerClimber') == null) {
+            localStorage.setItem('totalOutfitTowerClimber', 0);
+        }
+
+        totalOutfitTowerClimber = Number(localStorage.getItem('totalOutfitTowerClimber'));
+
+        //OutfitHomeInstaller
+        priceOutfitHomeInstaller = 10;
+        if (localStorage.getItem('qtyOutfitHomeInstaller') == null) {
+            localStorage.setItem('qtyOutfitHomeInstaller', 0);
+        }
+
+        qtyOutfitHomeInstaller = Number(localStorage.getItem('qtyOutfitHomeInstaller'));
+        function saveOutfitHomeInstaller(p) {
+            let qty = qtyOutfitHomeInstaller + p;
+            localStorage.setItem('qtyOutfitHomeInstaller', qty);
+            localStorage.setItem('totalOutfitHomeInstaller', qty * priceOutfitHomeInstaller);
+            //refreshPage();
+        }
+
+
+        if (localStorage.getItem('totalOutfitHomeInstaller') == null) {
+            localStorage.setItem('totalOutfitHomeInstaller', 0);
+        }
+        totalOutfitHomeInstaller = Number(localStorage.getItem('totalOutfitHomeInstaller'));
+    }
+}
+
+//---------------------------//Productos USA WEST// -----------------------------//
+//OutfitHomeInstaller
+
+if(region != null){
+    if(region == 'usa-west'){
+        //tower
+        
+        if (localStorage.getItem('qtyTower') == null) {
+            localStorage.setItem('qtyTower', 0);
+        }
+        qtyTower = Number(localStorage.getItem('qtyTower'));
+        function saveTower(p) {
+            let qty = qtyTower + p;
+            localStorage.setItem('qtyTower', qty);
+            localStorage.setItem('totalTower', qty * priceTower);
+            saveRemainingCredit();
+            refreshPage();
+        }
+        if (localStorage.getItem('totalTower') == null) {
+            localStorage.setItem('totalTower', 0);
+        }
+        totalTower = Number(localStorage.getItem('totalTower'));
+        //PTP850
+        
+        if (localStorage.getItem('qtyPtp850') == null) {
+            localStorage.setItem('qtyPtp850', 0);
+        }
+
+        qtyPtp850 = Number(localStorage.getItem('qtyPtp850'));
+        function savePtp850(p) {
+            let qty = qtyPtp850 + p;
+            localStorage.setItem('qtyPtp850', qty);
+            localStorage.setItem('totalPtp850', qty * pricePtp850);
+            //refreshPage();
+        }
+
+
+        if (localStorage.getItem('totalPtp850') == null) {
+            localStorage.setItem('totalPtp850', 0);
+        }
+        totalPtp850 = Number(localStorage.getItem('totalPtp850'));
+        //5Ghz cnMedusa
+        
+        if (localStorage.getItem('qtyCnMedusa') == null) {
+            localStorage.setItem('qtyCnMedusa', 0);
+        }
+
+        qtyCnMedusa = Number(localStorage.getItem('qtyCnMedusa'));
+        function saveCnMedusa(p) {
+            let qty = qtyCnMedusa + p;
+            localStorage.setItem('qtyCnMedusa', qty);
+            localStorage.setItem('totalCnMedusa', qty * priceCnMedusa);
+            //refreshPage();
+        }
+
+
+        if (localStorage.getItem('totalCnMedusa') == null) {
+            localStorage.setItem('totalCnMedusa', 0);
+        }
+        totalCnMedusa = Number(localStorage.getItem('totalCnMedusa'));
+        //Pmp450b
+        
+        if (localStorage.getItem('qtyPmp450b') == null) {
+            localStorage.setItem('qtyPmp450b', 0);
+        }
+
+        qtyPmp450b = Number(localStorage.getItem('qtyPmp450b'));
+        function savePmp450b(p) {
+            let qty = qtyPmp450b + p;
+            localStorage.setItem('qtyPmp450b', qty);
+            localStorage.setItem('totalPmp450b', qty * pricePmp450b);
+            //refreshPage();
+        }
+
+
+        if (localStorage.getItem('totalPmp450b') == null) {
+            localStorage.setItem('totalPmp450b', 0);
+        }
+        totalPmp450b = Number(localStorage.getItem('totalPmp450b'));
+        //CnPilot
+        
+        if (localStorage.getItem('qtyCnPilot') == null) {
+            localStorage.setItem('qtyCnPilot', 0);
+        }
+
+        qtyCnPilot = Number(localStorage.getItem('qtyCnPilot'));
+        function saveCnPilot(p) {
+            let qty = qtyCnPilot + p;
+            localStorage.setItem('qtyCnPilot', qty);
+            localStorage.setItem('totalCnPilot', qty * priceCnPilot);
+            //refreshPage();
+        }
+
+
+        if (localStorage.getItem('totalCnPilot') == null) {
+            localStorage.setItem('totalCnPilot', 0);
+        }
+        totalCnPilot = Number(localStorage.getItem('totalCnPilot'));
+    }
+    
+}
+//---------------------------//Productos USA EAST// -----------------------------//
+if(region != null){
+    if(region == 'usa-east'){
+
+    }
+}
+//---------------------------//Productos USA MID WEST// -----------------------------//
+if(region != null){
+    if(region == 'usa-mid-west'){
+
+    }
+}
+//----------------
 //Personaje
 let character = localStorage.getItem("character");
 //userName
@@ -713,69 +897,116 @@ document.addEventListener("keydown", function (event) {
         }
     }//Fin leverageExistingEstructure
     //Purchase
+
     if (section == 'purchase') {
         
-        switch (event.keyCode) {
-            case 49://add Tower
-                
-                if (cartAmount <= credit && remainigCredit >= priceTower) {
-                    saveTower(1);
-                    refreshPage();
-                }
-                break
-            case 50://add V5000
-                if (cartAmount <= credit && remainigCredit >= priceV5000) {
-                    saveV5000(1);
-                    refreshPage();
-                }
-                break
-            case 51://add V3000
-                if (cartAmount <= credit && remainigCredit >= priceV3000) {
-                    saveV3000(1);
-                    refreshPage();
-                }
-                break
-            case 52://add V1000
-                if (cartAmount <= credit && remainigCredit >= priceV1000) {
-                    saveV1000(1);
-                    refreshPage();
-                }
-                break
-            case 53://add ePMP 3000
-                if (cartAmount <= credit && remainigCredit >= priceEPMP3000) {
-                    saveEPMP3000(1);
-                    refreshPage();
-                }
-                break
-            case 54://add ePMP Force 300
-                if (cartAmount <= credit && remainigCredit >= priceEPMPforce300) {
-                    saveEPMPForce300(1);
-                    refreshPage();
-                }
-                break
-            case 55://add Outfit Tower Climber
-                if (cartAmount <= credit && remainigCredit >= priceOutfitTowerClimber) {
-                    saveOutfitTowerClimber(1);
-                    refreshPage();
-                }
-            case 56://add Outfit Home Installer
-                if (cartAmount <= credit && remainigCredit >= priceOutfitHomeInstaller) {
-                    saveOutfitHomeInstaller(1);
-                    refreshPage();
-                }
-                break
-            case 57:
-                redirectPage('ask-advice');
-                break
-            case 32:
-                saveCartAmount();
-                saveRemainingCredit();
-                refreshPage()
-                redirectPage('build-your-network')
-                break
-            default:
-                console.log("invalid option")
+        if(region == 'canada'){
+            switch (event.keyCode) {
+                case 49://add Tower
+                    
+                    if (cartAmount <= credit && remainigCredit >= priceTower) {
+                        saveTower(1);
+                        refreshPage();
+                    }
+                    break
+                case 50://add V5000
+                    if (cartAmount <= credit && remainigCredit >= priceV5000) {
+                        saveV5000(1);
+                        refreshPage();
+                    }
+                    break
+                case 51://add V3000
+                    if (cartAmount <= credit && remainigCredit >= priceV3000) {
+                        saveV3000(1);
+                        refreshPage();
+                    }
+                    break
+                case 52://add V1000
+                    if (cartAmount <= credit && remainigCredit >= priceV1000) {
+                        saveV1000(1);
+                        refreshPage();
+                    }
+                    break
+                case 53://add ePMP 3000
+                    if (cartAmount <= credit && remainigCredit >= priceEPMP3000) {
+                        saveEPMP3000(1);
+                        refreshPage();
+                    }
+                    break
+                case 54://add ePMP Force 300
+                    if (cartAmount <= credit && remainigCredit >= priceEPMPforce300) {
+                        saveEPMPForce300(1);
+                        refreshPage();
+                    }
+                    break
+                case 55://add Outfit Tower Climber
+                    if (cartAmount <= credit && remainigCredit >= priceOutfitTowerClimber) {
+                        saveOutfitTowerClimber(1);
+                        refreshPage();
+                    }
+                case 56://add Outfit Home Installer
+                    if (cartAmount <= credit && remainigCredit >= priceOutfitHomeInstaller) {
+                        saveOutfitHomeInstaller(1);
+                        refreshPage();
+                    }
+                    break
+                case 57:
+                    redirectPage('ask-advice');
+                    break
+                case 32:
+                    saveCartAmount();
+                    saveRemainingCredit();
+                    refreshPage()
+                    redirectPage('build-your-network')
+                    break
+                default:
+                    console.log("invalid option")
+            }
         }
+
+        if(region == 'usa-west'){
+            switch (event.keyCode) {
+                case 49://add Tower
+                    if (cartAmount <= credit && remainigCredit >= priceTower) {
+                        saveTower(1);
+                        refreshPage();
+                    }
+                break
+                case 50://add Ptp850
+                    if (cartAmount <= credit && remainigCredit >= pricePtp850) {
+                        savePtp850(1);
+                        refreshPage();
+                    }
+                break
+                case 51://add CnMedusa
+                    if (cartAmount <= credit && remainigCredit >= priceCnMedusa) {
+                        saveCnMedusa(1);
+                        refreshPage();
+                    }
+                break
+                case 52://add Pmp450b
+                    if (cartAmount <= credit && remainigCredit >= pricePmp450b) {
+                        savePmp450b(1);
+                        refreshPage();
+                    }
+                break
+                case 53://add Cnpilot
+                    if (cartAmount <= credit && remainigCredit >= priceCnPilot) {
+                        saveCnPilot(1);
+                        refreshPage();
+                    }
+                break
+                case 54://add Cnpilot
+                    redirectPage('ask-advice');
+                break
+            }
+        }
+
+        if(region == 'usa-east'){}
+
+        if(region == 'usa-mid-west'){}
+        
+
     }//Fin Purchase
     //ask-advice
     if (section == 'ask-advice') {
@@ -1107,20 +1338,38 @@ if (section == 'cityDetails') {
 
 let purchaseDiv = document.getElementById('purchase');
 
-if(purchaseDiv){
-    purchaseDiv.innerHTML = `
-    <div class="game-font text-center">
-    <p>[1] Tower ₩${priceTower} ${(qtyTower > 0) ? '--- ' + qtyTower : ''}</p>
-    <p>[2] V5000 --- ₩${priceV5000} ${ (qtyV5000 > 0) ? '--- ' +qtyV5000: '' }</p>
-    <p>[3] V3000 --- ₩${priceV3000} ${(qtyV3000 > 0)?'--- '+qtyV3000:''}</p>
-    <p>[4] V1000 --- ₩${priceV1000} ${(qtyV1000 > 0)?'--- '+qtyV1000:''}</p>
-    <p>[5] ePMP 3000 --- ₩${priceEPMP3000} ${(qtyEPMP3000 > 0)?'--- '+qtyEPMP3000:''}</p>
-    <p>[6] ePMP Force 300 --- ₩${priceEPMPforce300} ${(qtyEPMPforce300 > 0)?'--- '+qtyEPMPforce300:''}</p>
-    <p>[7] Outfit Tower Climber ----- ₩${priceOutfitTowerClimber} ${(qtyOutfitTowerClimber > 0)?'--- '+qtyOutfitTowerClimber:''}</p>
-    <p>[8] Outfit Home Installer ₩${priceOutfitHomeInstaller} ${(qtyOutfitHomeInstaller > 0)?'--- '+qtyOutfitHomeInstaller:''}</p>
-    <p>[9] Ask Advice-------₩0</p>
-    <p>Amount: ₩${cartAmount}</p>
-    </div>`;
+console.log(priceTower)
+
+if(region == 'canada'){
+    if(purchaseDiv){
+        purchaseDiv.innerHTML = `
+        <div class="game-font text-center">
+        <p>[1] Tower ₩${priceTower} ${(qtyTower > 0) ? '--- ' + qtyTower : ''}</p>
+        <p>[2] V5000 --- ₩${priceV5000} ${ (qtyV5000 > 0) ? '--- ' +qtyV5000: '' }</p>
+        <p>[3] V3000 --- ₩${priceV3000} ${(qtyV3000 > 0)?'--- '+qtyV3000:''}</p>
+        <p>[4] V1000 --- ₩${priceV1000} ${(qtyV1000 > 0)?'--- '+qtyV1000:''}</p>
+        <p>[5] ePMP 3000 --- ₩${priceEPMP3000} ${(qtyEPMP3000 > 0)?'--- '+qtyEPMP3000:''}</p>
+        <p>[6] ePMP Force 300 --- ₩${priceEPMPforce300} ${(qtyEPMPforce300 > 0)?'--- '+qtyEPMPforce300:''}</p>
+        <p>[7] Outfit Tower Climber ----- ₩${priceOutfitTowerClimber} ${(qtyOutfitTowerClimber > 0)?'--- '+qtyOutfitTowerClimber:''}</p>
+        <p>[8] Outfit Home Installer ₩${priceOutfitHomeInstaller} ${(qtyOutfitHomeInstaller > 0)?'--- '+qtyOutfitHomeInstaller:''}</p>
+        <p>[9] Ask Advice-------₩0</p>
+        <p>Amount: ₩${cartAmount}</p>
+        </div>`;
+    }
+}
+if(region == 'usa-west'){
+    if(purchaseDiv){
+        purchaseDiv.innerHTML = `
+        <div class="game-font text-center">
+        <p>[1] Tower ₩${priceTower} ${(qtyTower > 0) ? '--- ' + qtyTower : ''}</p>
+        <p>[2] PTP850 ₩${pricePtp850} ${(qtyPtp850 > 0) ? '--- ' + qtyPtp850 : ''}</p>
+        <p>[3] 5Ghz cnMedusa ₩${priceCnMedusa} ${(qtyCnMedusa > 0) ? '--- ' + qtyCnMedusa : ''}</p>
+        <p>[4] PMP450b ₩${pricePmp450b} ${(qtyPmp450b > 0) ? '--- ' + qtyPmp450b : ''}</p>
+        <p>[5] cnPilot ₩${priceCnPilot} ${(qtyCnPilot > 0) ? '--- ' + qtyCnPilot : ''}</p>
+        <p>[6] Ask Advice --- Complimentary</p>
+        <p>Amount: ₩${cartAmount}</p>
+        </div>`;
+    }
 }
 
 let towerDiv = document.getElementById('towerDiv');
@@ -1133,34 +1382,37 @@ let otcDiv = document.getElementById('otcDiv');
 let ohiDiv = document.getElementById('ohiDiv');
 let totalDiv = document.getElementById('total');
 let balanceDiv = document.getElementById('balance');
+
+let $askAdvice = document.getElementById('askAdvice')
+
 if (section == 'ask-advice') {
-    if (qtyTower > 0) {
-        towerDiv.innerHTML = `${qtyTower} Tower: <span style="text-decoration:line-through;">₩</span>${totalTower}`;
+
+    if(region == 'canada'){
+        if(qtyTower > 0){$askAdvice.innerHTML = `<p>${qtyTower} Tower: <span style="text-decoration:line-through;">₩</span>${totalTower}</p>`}
+        if(qtyV5000 > 0){$askAdvice.innerHTML += `<p>${qtyV5000} V5000: <span style="text-decoration:line-through;">₩</span>${totalV5000}</p>`}
+        if(qtyV3000 > 0){$askAdvice.innerHTML += `<p>${qtyV3000} V3000: <span style="text-decoration:line-through;">₩</span>${totalV3000}</p>`}
+        if(qtyV1000 > 0){$askAdvice.innerHTML += `<p>${qtyV1000} V1000: <span style="text-decoration:line-through;">₩</span>${totalV1000}</p>`}
+        if(qtyEPMP3000 > 0){$askAdvice.innerHTML += `<p>${qtyEPMP3000} EPMP3000: <span style="text-decoration:line-through;">₩</span>${totalEPMP3000}</p>`}
+        if(qtyEPMPforce300 > 0){$askAdvice.innerHTML += `<p>${qtyEPMPforce300} EPMPforce300: <span style="text-decoration:line-through;">₩</span>${totalEPMPforce300}</p>`}
+        if(qtyOutfitTowerClimber > 0){$askAdvice.innerHTML += `<p>${qtyOutfitTowerClimber} Outfit Tower Climber: <span style="text-decoration:line-through;">₩</span>${totalOutfitTowerClimber}</p>`}
+        if(qtyOutfitHomeInstaller > 0){$askAdvice.innerHTML += `<p>${qtyOutfitHomeInstaller} Outfit Home Installer: <span style="text-decoration:line-through;">₩</span>${totalOutfitHomeInstaller}</p>`}
+        $askAdvice.innerHTML += `</br></br>Total: <span style="text-decoration:line-through;">₩</span>${cartAmount}</p>`
+        $askAdvice.innerHTML += `<p>Your Balance: <span style="text-decoration:line-through;">₩</span>${remainigCredit}</p>`
+        
     }
-    if (qtyV5000 > 0) {
-        V5000Div.innerHTML = `${qtyV5000} V5000: <span style="text-decoration:line-through;">₩</span>${totalV5000}`;
+    if(region == 'usa-west'){
+        if(qtyTower > 0){$askAdvice.innerHTML = `<p>${qtyTower} Tower: <span style="text-decoration:line-through;">₩</span>${totalTower}</p>`}
+        if(qtyPtp850 > 0){$askAdvice.innerHTML += `<p>${qtyPtp850} PTP850: <span style="text-decoration:line-through;">₩</span>${totalPtp850}</p>`}
+        if(qtyCnMedusa > 0){$askAdvice.innerHTML += `<p>${qtyCnMedusa} cnMedusa: <span style="text-decoration:line-through;">₩</span>${totalCnMedusa}</p>`}
+        if(qtyPmp450b > 0){$askAdvice.innerHTML += `<p>${qtyPmp450b} PMP450b: <span style="text-decoration:line-through;">₩</span>${totalPmp450b}</p>`}
+        if(qtyCnPilot > 0){$askAdvice.innerHTML += `<p>${qtyCnPilot} cnPilot: <span style="text-decoration:line-through;">₩</span>${totalCnPilot}</p>`}
+        $askAdvice.innerHTML += `</br></br>Total: <span style="text-decoration:line-through;">₩</span>${cartAmount}</p>`
+        $askAdvice.innerHTML += `<p>Your Balance: <span style="text-decoration:line-through;">₩</span>${remainigCredit}</p>`
     }
-    if (qtyV3000 > 0) {
-        V3000Div.innerHTML = `${qtyV3000} V3000: <span style="text-decoration:line-through;">₩</span>${totalV3000}`;
-    }
-    if (qtyV1000 > 0) {
-        V1000Div.innerHTML = `${qtyV1000} V1000: <span style="text-decoration:line-through;">₩</span>${totalV1000}`;
-    }
-    if (qtyEPMP3000 > 0) {
-        EPMP3000Div.innerHTML = `${qtyEPMP3000} EPMP3000: <span style="text-decoration:line-through;">₩</span>${totalEPMP3000}`;
-    }
-    if (qtyEPMPforce300 > 0) {
-        EPMPForce300Div.innerHTML = `${qtyEPMPforce300} EPMPForce300: <span style="text-decoration:line-through;">₩</span>${totalEPMPforce300}`;
-    }
-    if (qtyOutfitTowerClimber > 0) {
-        otcDiv.innerHTML = `${qtyOutfitTowerClimber} Outfit Tower Climber: <span style="text-decoration:line-through;">₩</span>${totalOutfitTowerClimber}`;
-    }
-    if (qtyOutfitHomeInstaller > 0) {
-        ohiDiv.innerHTML = `${qtyOutfitHomeInstaller} Outfit Home Installer: <span style="text-decoration:line-through;">₩</span>${totalOutfitHomeInstaller}`;
-    }
-    totalDiv.innerHTML = ` Total: <span style="text-decoration:line-through;">₩</span>${cartAmount}`;
-    balanceDiv.innerHTML = ` Your Balance: <span style="text-decoration:line-through;">₩</span>${remainigCredit}`;
+    if(region == 'usa-east'){}
+    if(region == 'usa-mid-west'){}
 }
+
 if (section == 'build-your-network' 
     || section == 'lesser-path' 
     || section == 'install-distribution-nodes' 
