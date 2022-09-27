@@ -1020,25 +1020,25 @@ if($messageSuccessfullyInstalled && localStorage.getItem('region') != null){
         break
     }
 }
-//Mensaje successfully-installed
-let $messageRunLinkplanner = document.getElementById('messageRunLinkplanner');
+//Mensaje linkplanner
+let $messageLinkplanner = document.getElementById('messageLinkplanner');
 
-if($messageRunLinkplanner && localStorage.getItem('region') != null){
+if($messageLinkplanner && localStorage.getItem('region') != null){
     switch(region){
         case 'canada':
-           $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running an ePMP 3000 from the main fiber core and placing Force 300 Subscriber Modules at each farm location to complete the connection.</p></br>`
+           $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running an ePMP 3000 from the main fiber core and placing Force 300 Subscriber Modules at each farm location to complete the connection.</p></br>`
         break
     
         case 'usa-west':
-            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running a V3000 at the closest tower to the community and installing V1000s at each homeowner location. V3000 will support up to 30 subscriber modules so you're good to go.</p></br>`
+            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running a V3000 at the closest tower to the community and installing V1000s at each homeowner location. V3000 will support up to 30 subscriber modules so you're good to go.</p></br>`
         break
         
         case 'usa-east':
-            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running an ePMP 3000 from the main fiber core at the middle school and installing a Force 300 subscriber module at the student's location.</p></br>`
+            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running an ePMP 3000 from the main fiber core at the middle school and installing a Force 300 subscriber module at the student's location.</p></br>`
         break
     
         case 'usa-mid-west':
-            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
+            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
         break
     }
 }
@@ -1057,11 +1057,11 @@ if($messageConnectivityFarms && localStorage.getItem('region') != null){
         break
         
         case 'usa-east':
-            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> </p></br>`
+            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> No data</p></br>`
         break
     
         case 'usa-mid-west':
-            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> </p></br>`
+            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> No data</p></br>`
         break
     }
 }
@@ -1069,10 +1069,9 @@ if($messageConnectivityFarms && localStorage.getItem('region') != null){
 //MensajeVillage
 let $messageVillage = document.getElementById('messageVillage');
 
-if($messageVillage && localStorage.getItem('region') == 'city'){
+if($messageVillage && localStorage.getItem('region') != null){
    console.log(region)
    console.log($messageVillage)
-   //FIXME: Corregir el guardado en local storage de la region, ya que por ese motivo no se imprimen los siguientes mensahes
     switch(region){
         case 'canada':
            $messageVillage.innerHTML = `<p class="game-font text-center"> Great job. The village of Mapleton is connected and everyone is enjoying Netflix, Video Games, and uploading moose videos. The only thing left to do is optimize the network and make sure Mapleton is taking full advantage of the available bandwidth.</p></br>`
@@ -1084,15 +1083,104 @@ if($messageVillage && localStorage.getItem('region') == 'city'){
         break
         
         case 'usa-east':
-            $messageVillage.innerHTML = `<p class="game-font text-center"> </p></br>`
+            $messageVillage.innerHTML = `<p class="game-font text-center"> No data</p></br>`
         break
     
         case 'usa-mid-west':
-            $messageVillage.innerHTML = `<p class="game-font text-center"> </p></br>`
+            $messageVillage.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    }
+}
+//Compra prod adicional
+let $messagePurchaseAditionalProd = document.getElementById('messagePurchaseAditionalProd');
+
+if($messagePurchaseAditionalProd && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> While the V1000 certainly has the bandwidth capabilities necessary, it does not have the range required to make this link. The V1000 subscriber modules are great for shorter distances but are not the best option for this particular situation.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> Unfortunately, only 6 of the 20 households in that community are within the range of the e501 Outdoor AP. You'll have to find another way to bring connectivity to the area.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> No data</p></br>`
         break
     }
 }
 
+
+let $messageRunLinkplanner = document.getElementById('messageRunLinkplanner');
+
+if($messageRunLinkplanner && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    }
+}
+
+
+let $messageRunCnMaestro = document.getElementById('messageRunCnMaestro');
+
+if($messageRunCnMaestro && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} has reduced truck rolls by 30% because of remote troubleshooting made possible by cnMaestro's robust analytics dashboard. ‍</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} was able to prioritize devices and optimize traffic on the network to increase throughput for more critical devices on the network.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    }
+}
+
+let $messageRunCnArcher = document.getElementById('messageRunCnArcher');
+
+if($messageRunCnArcher && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} ran cnArcher at the top of the clocktower to ensure the ePMP was optimized. A slight tuning based on the cnArcher data increased throughput for the three remote farms</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} [Crew Member 1] ran cnArcher at the top of the furthest tower to ensure optimal placement for the V3000. A slight adjustment based on the cnArcher data increased throughput for the twenty VI OCIOS in the remote community.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
 
 
 //detectar eventos del teclado
@@ -1871,6 +1959,7 @@ if (section == 'build-your-network'
     || section == 'run-cnmaestro'
     || section == 'stats'
     || section == 'image-stats'
+    || section == 'cng'
     ) {
     crewMoraleTag.innerText = crewMorale;
     subscribersTag.innerText = subscribers;

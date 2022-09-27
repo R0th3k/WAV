@@ -25,3 +25,5 @@ if(region == 'canada'){}
 if(region == 'usa-west'){}
 if(region == 'usa-east'){}
 if(region == 'usa-mid-west'){}
+
+${localStorage.getItem('memberCrew1')}
