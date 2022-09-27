@@ -833,354 +833,7 @@ if($city && localStorage.getItem('region') != null){
         break
     }
 }
-//TODO:Mensajes
-//Mensaje por region/ciudad al seleccionar Tarea
-let $messageSelectTask = document.getElementById('messageSelectTask');
 
-if($messageSelectTask && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the fiber core in the middle of the village of Mapleton and need to connect -350 people across 190 homes and businesses with gigabit connectivity. The total village area is roughly 1 square mile. You have 45 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
-        break
-    
-        case 'usa-west':
-            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the fiber core in the middle of the Zuni Pueblo and need to connect ~1,000 people across 490 homes and businesses with gigabit connectivity. You have a 10GB fiber line and the total area needing coverage is spread out across roughly 300 square miles. You have 90 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
-        break
-        
-        case 'usa-east':
-            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at Oakdale School District offices after the city received CARES Act funding and were able to lease 1Gb fiber connections to each of the 3 schools in the area. You've been tasked with providing internet connectivity to the 28 unserved students at their homes to ensure remote learning capabilities. You'll also need to upgrade the school's network for when students are on-premise. You have 90-Days to complete the network buildout.</p><p class="game-font text-center"> What would you like to do?</p>`
-        break
-    
-        case 'usa-mid-west':
-            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the Wisco Cherry School District offices and need to connect a network to support
-            ~3,000 concurrent users across 5 campuses. The district is also requesting outdoor Wi-Fi capabilities to allow students to connect within the campus parking lots. Each campus has a leased 5GB fiber back bone to the premise. You have 90 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
-        break
-    }
-}
-
-//Mensaje Droped a bolt
-let $messageDroppedBolt = document.getElementById('messageDroppedBolt');
-
-if($messageDroppedBolt && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageDroppedBolt.innerHTML = `<p class="game-font text-center">${localStorage.getItem('memberCrew2')} dropped a bolt from the mounting bracket. Luckily, WAV had spare bolts they overnighted you but you still lost 2 days.</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageDroppedBolt.innerHTML = `<p class="game-font text-center">${localStorage.getItem('memberCrew2')} arrived late and realized he also forgot to bring along his harness. You lost an additional day waiting for him to retrieve the forgotten harness.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageDroppedBolt.innerHTML = `<p class="game-font text-center">${localStorage.getItem('memberCrew2')}, your only certified tower climber, met the woman of his dreams at the hotel you all are staying at and spontaneously drove off into the Pennsylvania sunset. You've lost a day, but he just texted you that they got into a fight and will be at work tomorrow</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageDroppedBolt.innerHTML = `<p class="game-font text-center">${localStorage.getItem('memberCrew2')} arrived late and realized he also forgot to bring along his harness. You lost an additional day waiting for him to retrieve the forgotten harness.</p></br>`
-        break
-    }
-}
-//Mensaje Punish path
-let $messagePunishPath = document.getElementById('messagePunishPath');
-
-if($messagePunishPath && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messagePunishPath.innerHTML = `<p class="game-font text-center">Unfortunately a large storm with high winds has rolled in requiring you to postpone your distribution node install 3 days.</p></br>`
-        break
-    
-        case 'usa-west':
-            $messagePunishPath.innerHTML = `<p class="game-font text-center">Since you already built your towers you're good to go. That said, a large ceremony was planned causing a complete shut down of work on the reservation. You'll have to wait 3 days until you can resume work. The chief was gracious enough to invite you and the crew to the ceremonial proceedings to show his appreciation for your work.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messagePunishPath.innerHTML = `<p class="game-font text-center">Last night's crew dinner was not cooked properly. You and your crew have food poisoning.</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messagePunishPath.innerHTML = `<p class="game-font text-center">A teachers conference was scheduled at each of the schools delaying work for 3 days</p></br>`
-        break
-    }
-}
-
-//Mensaje Install distribution nodes
-let $messageIDN = document.getElementById('messageIDN');
-
-if($messageIDN && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageIDN.innerHTML = `<p class="game-font text-center">Great, you were able to install 22 of the V5000 distribution nodes and 2 V3000. You'll install the remaining V5000 & V3000 tomorrow.</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageIDN.innerHTML = `<p class="game-font text-center">Great, looks like the towers went up without a problem. You've installed 25 towers across the reservation. It's time to get the distribution nodes up.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageIDN.innerHTML = `<p class="game-font text-center">Great, looks like the 3 cnMedusa's went up easily. Its time to get the subscriber modules up.</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageIDN.innerHTML = `<p class="game-font text-center">Great, looks like the [first steps] have been completed. Time to install the other Access Points.</p></br>`
-        break
-    }
-}
-//Mensaje lesser-path
-let $messageLesserPath = document.getElementById('messageLesserPath');
-
-if($messageLesserPath && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageLesserPath.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} had long night and did not show up for work delaying the install by 1 day</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageLesserPath.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} have fallen ill. Luckily for the rest of the crew it is not contagious. </p></br>`
-        break
-        
-        case 'usa-east':
-            $messageLesserPath.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} have fallen ill. Luckily for the rest of the crew it is not contagious.</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageLesserPath.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} ate some cafeteria food and got food poisoning. Luckily for the rest of the crew they only had chocolate milk.</p></br>`
-        break
-    }
-}
-//Mensaje installed-remaining
-let $messageInstalledRemaining = document.getElementById('messageInstalledRemaining');
-
-if($messageInstalledRemaining && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageInstalledRemaining.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew1')} came in clutch and installed the remaining 13 V5000s and the last V3000, finishing the entire distribution node build-out. All in one day!! Time for a nice dinner before starting on subscriber modules tomorrow.
-           </p></br>`
-        break
-    
-        case 'usa-west':
-            $messageInstalledRemaining.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew1')} & ${localStorage.getItem('memberCrew3')}  came in clutch and installed all of the cnMedusa nodes in 3 days. Meanwhile ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} installed all of the PTP systems. Time for a nice dinner before starting on the installation of the subscriber modules and routers tomorrow.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageInstalledRemaining.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew1')} came in clutch and installed all of the PMP 450i Subscriber Modules in 3 days bringing 25Mbps down and 5Mbps up connectivity to 90 homes in near and non-line of sight of the 3 school locations. Time for a nice dinner before starting on the school's Access Points tomorrow.</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageInstalledRemaining.innerHTML = `<p class="game-font text-center">  ${localStorage.getItem('memberCrew1')} came in clutch and installed 180 XV2 access points for the entire highschool in one day. You think to yourself about  ${localStorage.getItem('memberCrew1')} and quickly understand that the ease of Cambium's self-deployment is the real hero here.  ${localStorage.getItem('memberCrew2')} &  ${localStorage.getItem('memberCrew3')} &  ${localStorage.getItem('memberCrew4')} were able to install an additional 140 XV2 APs at the 2 elementary schools, leaving just the middle school to connect tomorrow.</p></br>`
-        break
-    }
-}
-//Mensaje installed-remaining
-let $messageInstallationSubscriptors = document.getElementById('messageInstallationSubscriptors');
-
-if($messageInstallationSubscriptors && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageInstallationSubscriptors.innerHTML = `<p class="game-font text-center"> Your crew manages to knock out 130 subscriber installs in one day. With smiles all around at dinner, ${localStorage.getItem('memberCrew2')} mentions how quick and easy the V1000 is to deploy.</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageInstallationSubscriptors.innerHTML = `<p class="game-font text-center">Your crew manages to knock out 632 PMP450b subscriber modules and 632 cnPilot R195 routers at customers' homes in three days. </p></br>`
-        break
-        
-        case 'usa-east':
-            $messageInstallationSubscriptors.innerHTML = `<p class="game-font text-center"> Your crew manages to knock out the 72 XV2 access point installations across all three schools in three days. With smiles all around at dinner, ${localStorage.getItem('memberCrew2')} mentions how easy they are to install and get up and running. Now you just need to get switches in tomorrow and we'll be well on our way to a completed network.</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageInstallationSubscriptors.innerHTML = `<p class="game-font text-center"> You install the last 80 XV2 access points at the middle school, all before lunch. With smiles all around you take a well deserved half-day before returning to do the outdoor APs tomorrow.</p></br>`
-        break
-    }
-}
-//Mensaje successfully-installed
-let $messageSuccessfullyInstalled = document.getElementById('messageSuccessfullyInstalled');
-let $messageSuccessfullyInstalled2 = document.getElementById('messageSuccessfullyInstalled2');
-
-
-if($messageSuccessfullyInstalled && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageSuccessfullyInstalled.innerHTML = `<p class="game-font text-center"> You successfully installed the remaining cnWave V1000 subscriber modules for the rest of the village residents totaling 190 V1000 installs over the last two days. The village is over the moon but have mentioned that there are three remote farms approximately 6 miles away on the outskirts of the city that need connectivity.</p></br>`
-           $messageSuccessfullyInstalled2.innerHTML = `2.Purchase 3 additional V1000`
-        break
-    
-        case 'usa-west':
-            $messageSuccessfullyInstalled.innerHTML = `<p class="game-font text-center"> In two days, your crew has finished installing the remaining 368 subscriber modules and routers for the Pueblo. Everyone is pleased but the chief has mentioned there is an additional community of 20 unserved residents at the outermost edges of the Pueblo about a half-mile away from the nearest tower.</p></br>`
-            $messageSuccessfullyInstalled2.innerHTML = `2- Purchase ane501 Outdoor Wi-Fi Access Point`
-        break
-        
-        case 'usa-east':
-            $messageSuccessfullyInstalled.innerHTML = `<p class="game-font text-center"> You and the crew successfully installed the 3 cnMatrix switches at each of the school building locations. The network is lightning fast and everyone is pumped, although the district Super Intendant mentioned that an under-privileged rural family located in the bottom of a valley 3.3 miles away is in desperate need of connectivity to ensure the residing student has the infrastructure needed for remote learning. They have line of sight to the top of the middle school.</p></br>`
-            $messageSuccessfullyInstalled2.innerHTML = `2- Purchase VI 000`
-        break
-    
-        case 'usa-mid-west':
-            $messageSuccessfullyInstalled.innerHTML = `<p class="game-font text-center"> You successfully installed the 22 e501 Outdoor Access Points across the 5 school campuses. The district CTO is pleased but the super intendant has mentioned that he'd like to leverage the newly installed network for his remote cabin 2.2 miles away atop the hill behind the high school. While a little unorthodox, the super intendant is a family friend.</p></br>`
-            $messageSuccessfullyInstalled2.innerHTML = `2- Purchase Medusa 3.65Ghz AP and Subscriber Module`
-        break
-    }
-}
-//Mensaje linkplanner
-let $messageLinkplanner = document.getElementById('messageLinkplanner');
-
-if($messageLinkplanner && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running an ePMP 3000 from the main fiber core and placing Force 300 Subscriber Modules at each farm location to complete the connection.</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running a V3000 at the closest tower to the community and installing V1000s at each homeowner location. V3000 will support up to 30 subscriber modules so you're good to go.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running an ePMP 3000 from the main fiber core at the middle school and installing a Force 300 subscriber module at the student's location.</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
-        break
-    }
-}
-
-//Mensaje connectivity-to-the-farms
-let $messageConnectivityFarms = document.getElementById('messageConnectivityFarms');
-
-if($messageConnectivityFarms && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> You've installed the ePMP 3000 on the clock tower at the Village Square and the 3 ePMP Force 300s at customer sites providing connectivity to the farms 6.3 miles away.</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> You've installed the V3000 and the 20 V1000s in the remote community about a half-mile away.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    }
-}
-
-//MensajeVillage
-let $messageVillage = document.getElementById('messageVillage');
-
-if($messageVillage && localStorage.getItem('region') != null){
-   console.log(region)
-   console.log($messageVillage)
-    switch(region){
-        case 'canada':
-           $messageVillage.innerHTML = `<p class="game-font text-center"> Great job. The village of Mapleton is connected and everyone is enjoying Netflix, Video Games, and uploading moose videos. The only thing left to do is optimize the network and make sure Mapleton is taking full advantage of the available bandwidth.</p></br>`
-        break
-    
-        case 'usa-west':
-            
-            $messageVillage.innerHTML = `<p class="game-font text-center"> Great job. The Zuni Pueblo is connected and everyone is enjoying Netflix & Video Games. The only thing left to do is optimize the network and make sure the Pueblo is taking full advantage of the available bandwidth.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageVillage.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageVillage.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    }
-}
-//Compra prod adicional
-let $messagePurchaseAditionalProd = document.getElementById('messagePurchaseAditionalProd');
-
-if($messagePurchaseAditionalProd && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> While the V1000 certainly has the bandwidth capabilities necessary, it does not have the range required to make this link. The V1000 subscriber modules are great for shorter distances but are not the best option for this particular situation.</p></br>`
-        break
-    
-        case 'usa-west':
-            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> Unfortunately, only 6 of the 20 households in that community are within the range of the e501 Outdoor AP. You'll have to find another way to bring connectivity to the area.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    }
-}
-
-
-let $messageRunLinkplanner = document.getElementById('messageRunLinkplanner');
-
-if($messageRunLinkplanner && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    }
-}
-
-
-let $messageRunCnMaestro = document.getElementById('messageRunCnMaestro');
-
-if($messageRunCnMaestro && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} has reduced truck rolls by 30% because of remote troubleshooting made possible by cnMaestro's robust analytics dashboard. ‍</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} was able to prioritize devices and optimize traffic on the network to increase throughput for more critical devices on the network.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> No data</p></br>`
-        break
-    }
-}
-
-let $messageRunCnArcher = document.getElementById('messageRunCnArcher');
-
-if($messageRunCnArcher && localStorage.getItem('region') != null){
-    switch(region){
-        case 'canada':
-           $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} ran cnArcher at the top of the clocktower to ensure the ePMP was optimized. A slight tuning based on the cnArcher data increased throughput for the three remote farms</p></br>`
-        break
-    
-        case 'usa-west':
-            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} [Crew Member 1] ran cnArcher at the top of the furthest tower to ensure optimal placement for the V3000. A slight adjustment based on the cnArcher data increased throughput for the twenty VI OCIOS in the remote community.</p></br>`
-        break
-        
-        case 'usa-east':
-            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> </p></br>`
-        break
-    
-        case 'usa-mid-west':
-            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> </p></br>`
-        break
-    }
-}
 
 
 //detectar eventos del teclado
@@ -1960,6 +1613,7 @@ if (section == 'build-your-network'
     || section == 'stats'
     || section == 'image-stats'
     || section == 'cng'
+    || section == 'current-network-generates'
     ) {
     crewMoraleTag.innerText = crewMorale;
     subscribersTag.innerText = subscribers;
@@ -2003,3 +1657,417 @@ if(section == 'image-stats'){
 // let text = "My Stats On WAV Trail.";
 // window.open('http://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(url), '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
 // }
+
+
+//TODO:Mensajes
+//Mensaje por region/ciudad al seleccionar Tarea
+let $messageSelectTask = document.getElementById('messageSelectTask');
+
+if($messageSelectTask && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the fiber core in the middle of the village of Mapleton and need to connect -350 people across 190 homes and businesses with gigabit connectivity. The total village area is roughly 1 square mile. You have 45 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
+        break
+    
+        case 'usa-west':
+            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the fiber core in the middle of the Zuni Pueblo and need to connect ~1,000 people across 490 homes and businesses with gigabit connectivity. You have a 10GB fiber line and the total area needing coverage is spread out across roughly 300 square miles. You have 90 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
+        break
+        
+        case 'usa-east':
+            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at Oakdale School District offices after the city received CARES Act funding and were able to lease 1Gb fiber connections to each of the 3 schools in the area. You've been tasked with providing internet connectivity to the 28 unserved students at their homes to ensure remote learning capabilities. You'll also need to upgrade the school's network for when students are on-premise. You have 90-Days to complete the network buildout.</p><p class="game-font text-center"> What would you like to do?</p>`
+        break
+    
+        case 'usa-mid-west':
+            $messageSelectTask.innerHTML = `<p class="game-font text-center">You've arrived at the Wisco Cherry School District offices and need to connect a network to support
+            ~3,000 concurrent users across 5 campuses. The district is also requesting outdoor Wi-Fi capabilities to allow students to connect within the campus parking lots. Each campus has a leased 5GB fiber back bone to the premise. You have 90 days to complete the network build-out.</p><p class="game-font text-center"> What would you like to do?</p>`
+        break
+    }
+}
+
+//Mensaje Droped a bolt
+let $messageDroppedBolt = document.getElementById('messageDroppedBolt');
+
+if($messageDroppedBolt && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageDroppedBolt.innerHTML = `<p class="game-font text-center">${localStorage.getItem('memberCrew2')} dropped a bolt from the mounting bracket. Luckily, WAV had spare bolts they overnighted you but you still lost 2 days.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageDroppedBolt.innerHTML = `<p class="game-font text-center">${localStorage.getItem('memberCrew2')} arrived late and realized he also forgot to bring along his harness. You lost an additional day waiting for him to retrieve the forgotten harness.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageDroppedBolt.innerHTML = `<p class="game-font text-center">${localStorage.getItem('memberCrew2')}, your only certified tower climber, met the woman of his dreams at the hotel you all are staying at and spontaneously drove off into the Pennsylvania sunset. You've lost a day, but he just texted you that they got into a fight and will be at work tomorrow</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageDroppedBolt.innerHTML = `<p class="game-font text-center">${localStorage.getItem('memberCrew2')} arrived late and realized he also forgot to bring along his harness. You lost an additional day waiting for him to retrieve the forgotten harness.</p></br>`
+        break
+    }
+}
+//Mensaje Punish path
+let $messagePunishPath = document.getElementById('messagePunishPath');
+
+if($messagePunishPath && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messagePunishPath.innerHTML = `<p class="game-font text-center">Unfortunately a large storm with high winds has rolled in requiring you to postpone your distribution node install 3 days.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messagePunishPath.innerHTML = `<p class="game-font text-center">Since you already built your towers you're good to go. That said, a large ceremony was planned causing a complete shut down of work on the reservation. You'll have to wait 3 days until you can resume work. The chief was gracious enough to invite you and the crew to the ceremonial proceedings to show his appreciation for your work.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messagePunishPath.innerHTML = `<p class="game-font text-center">Last night's crew dinner was not cooked properly. You and your crew have food poisoning.</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messagePunishPath.innerHTML = `<p class="game-font text-center">A teachers conference was scheduled at each of the schools delaying work for 3 days</p></br>`
+        break
+    }
+}
+
+//Mensaje Install distribution nodes
+let $messageIDN = document.getElementById('messageIDN');
+
+if($messageIDN && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageIDN.innerHTML = `<p class="game-font text-center">Great, you were able to install 22 of the V5000 distribution nodes and 2 V3000. You'll install the remaining V5000 & V3000 tomorrow.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageIDN.innerHTML = `<p class="game-font text-center">Great, looks like the towers went up without a problem. You've installed 25 towers across the reservation. It's time to get the distribution nodes up.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageIDN.innerHTML = `<p class="game-font text-center">Great, looks like the 3 cnMedusa's went up easily. Its time to get the subscriber modules up.</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageIDN.innerHTML = `<p class="game-font text-center">Great, looks like the [first steps] have been completed. Time to install the other Access Points.</p></br>`
+        break
+    }
+}
+//Mensaje lesser-path
+let $messageLesserPath = document.getElementById('messageLesserPath');
+
+if($messageLesserPath && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageLesserPath.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} had long night and did not show up for work delaying the install by 1 day</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageLesserPath.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} have fallen ill. Luckily for the rest of the crew it is not contagious. </p></br>`
+        break
+        
+        case 'usa-east':
+            $messageLesserPath.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} have fallen ill. Luckily for the rest of the crew it is not contagious.</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageLesserPath.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} ate some cafeteria food and got food poisoning. Luckily for the rest of the crew they only had chocolate milk.</p></br>`
+        break
+    }
+}
+//Mensaje installed-remaining
+let $messageInstalledRemaining = document.getElementById('messageInstalledRemaining');
+
+if($messageInstalledRemaining && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageInstalledRemaining.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew1')} came in clutch and installed the remaining 13 V5000s and the last V3000, finishing the entire distribution node build-out. All in one day!! Time for a nice dinner before starting on subscriber modules tomorrow.
+           </p></br>`
+        break
+    
+        case 'usa-west':
+            $messageInstalledRemaining.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew1')} & ${localStorage.getItem('memberCrew3')}  came in clutch and installed all of the cnMedusa nodes in 3 days. Meanwhile ${localStorage.getItem('memberCrew2')} & ${localStorage.getItem('memberCrew4')} installed all of the PTP systems. Time for a nice dinner before starting on the installation of the subscriber modules and routers tomorrow.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageInstalledRemaining.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew1')} came in clutch and installed all of the PMP 450i Subscriber Modules in 3 days bringing 25Mbps down and 5Mbps up connectivity to 90 homes in near and non-line of sight of the 3 school locations. Time for a nice dinner before starting on the school's Access Points tomorrow.</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageInstalledRemaining.innerHTML = `<p class="game-font text-center">  ${localStorage.getItem('memberCrew1')} came in clutch and installed 180 XV2 access points for the entire highschool in one day. You think to yourself about  ${localStorage.getItem('memberCrew1')} and quickly understand that the ease of Cambium's self-deployment is the real hero here.  ${localStorage.getItem('memberCrew2')} &  ${localStorage.getItem('memberCrew3')} &  ${localStorage.getItem('memberCrew4')} were able to install an additional 140 XV2 APs at the 2 elementary schools, leaving just the middle school to connect tomorrow.</p></br>`
+        break
+    }
+}
+//Mensaje installed-remaining
+let $messageInstallationSubscriptors = document.getElementById('messageInstallationSubscriptors');
+
+if($messageInstallationSubscriptors && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageInstallationSubscriptors.innerHTML = `<p class="game-font text-center"> Your crew manages to knock out 130 subscriber installs in one day. With smiles all around at dinner, ${localStorage.getItem('memberCrew2')} mentions how quick and easy the V1000 is to deploy.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageInstallationSubscriptors.innerHTML = `<p class="game-font text-center">Your crew manages to knock out 632 PMP450b subscriber modules and 632 cnPilot R195 routers at customers' homes in three days. </p></br>`
+        break
+        
+        case 'usa-east':
+            $messageInstallationSubscriptors.innerHTML = `<p class="game-font text-center"> Your crew manages to knock out the 72 XV2 access point installations across all three schools in three days. With smiles all around at dinner, ${localStorage.getItem('memberCrew2')} mentions how easy they are to install and get up and running. Now you just need to get switches in tomorrow and we'll be well on our way to a completed network.</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageInstallationSubscriptors.innerHTML = `<p class="game-font text-center"> You install the last 80 XV2 access points at the middle school, all before lunch. With smiles all around you take a well deserved half-day before returning to do the outdoor APs tomorrow.</p></br>`
+        break
+    }
+}
+//Mensaje successfully-installed
+let $messageSuccessfullyInstalled = document.getElementById('messageSuccessfullyInstalled');
+let $messageSuccessfullyInstalled2 = document.getElementById('messageSuccessfullyInstalled2');
+
+
+if($messageSuccessfullyInstalled && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageSuccessfullyInstalled.innerHTML = `<p class="game-font text-center"> You successfully installed the remaining cnWave V1000 subscriber modules for the rest of the village residents totaling 190 V1000 installs over the last two days. The village is over the moon but have mentioned that there are three remote farms approximately 6 miles away on the outskirts of the city that need connectivity.</p></br>`
+           $messageSuccessfullyInstalled2.innerHTML = `2.Purchase 3 additional V1000`
+        break
+    
+        case 'usa-west':
+            $messageSuccessfullyInstalled.innerHTML = `<p class="game-font text-center"> In two days, your crew has finished installing the remaining 368 subscriber modules and routers for the Pueblo. Everyone is pleased but the chief has mentioned there is an additional community of 20 unserved residents at the outermost edges of the Pueblo about a half-mile away from the nearest tower.</p></br>`
+            $messageSuccessfullyInstalled2.innerHTML = `2- Purchase ane501 Outdoor Wi-Fi Access Point`
+        break
+        
+        case 'usa-east':
+            $messageSuccessfullyInstalled.innerHTML = `<p class="game-font text-center"> You and the crew successfully installed the 3 cnMatrix switches at each of the school building locations. The network is lightning fast and everyone is pumped, although the district Super Intendant mentioned that an under-privileged rural family located in the bottom of a valley 3.3 miles away is in desperate need of connectivity to ensure the residing student has the infrastructure needed for remote learning. They have line of sight to the top of the middle school.</p></br>`
+            $messageSuccessfullyInstalled2.innerHTML = `2- Purchase VI 000`
+        break
+    
+        case 'usa-mid-west':
+            $messageSuccessfullyInstalled.innerHTML = `<p class="game-font text-center"> You successfully installed the 22 e501 Outdoor Access Points across the 5 school campuses. The district CTO is pleased but the super intendant has mentioned that he'd like to leverage the newly installed network for his remote cabin 2.2 miles away atop the hill behind the high school. While a little unorthodox, the super intendant is a family friend.</p></br>`
+            $messageSuccessfullyInstalled2.innerHTML = `2- Purchase Medusa 3.65Ghz AP and Subscriber Module`
+        break
+    }
+}
+//Mensaje linkplanner
+let $messageLinkplanner = document.getElementById('messageLinkplanner');
+
+if($messageLinkplanner && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running an ePMP 3000 from the main fiber core and placing Force 300 Subscriber Modules at each farm location to complete the connection.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running a V3000 at the closest tower to the community and installing V1000s at each homeowner location. V3000 will support up to 30 subscriber modules so you're good to go.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> LINKPlanner has suggested running an ePMP 3000 from the main fiber core at the middle school and installing a Force 300 subscriber module at the student's location.</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
+        break
+    }
+}
+
+//Mensaje connectivity-to-the-farms
+let $messageConnectivityFarms = document.getElementById('messageConnectivityFarms');
+
+if($messageConnectivityFarms && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> You've installed the ePMP 3000 on the clock tower at the Village Square and the 3 ePMP Force 300s at customer sites providing connectivity to the farms 6.3 miles away.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> You've installed the V3000 and the 20 V1000s in the remote community about a half-mile away.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageConnectivityFarms.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    }
+}
+
+//MensajeVillage
+let $messageVillage = document.getElementById('messageVillage');
+
+if($messageVillage && localStorage.getItem('region') != null){
+   console.log(region)
+   console.log($messageVillage)
+    switch(region){
+        case 'canada':
+           $messageVillage.innerHTML = `<p class="game-font text-center"> Great job. The village of Mapleton is connected and everyone is enjoying Netflix, Video Games, and uploading moose videos. The only thing left to do is optimize the network and make sure Mapleton is taking full advantage of the available bandwidth.</p></br>`
+        break
+    
+        case 'usa-west':
+            
+            $messageVillage.innerHTML = `<p class="game-font text-center"> Great job. The Zuni Pueblo is connected and everyone is enjoying Netflix & Video Games. The only thing left to do is optimize the network and make sure the Pueblo is taking full advantage of the available bandwidth.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageVillage.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageVillage.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    }
+}
+//Compra prod adicional
+let $messagePurchaseAditionalProd = document.getElementById('messagePurchaseAditionalProd');
+
+if($messagePurchaseAditionalProd && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> While the V1000 certainly has the bandwidth capabilities necessary, it does not have the range required to make this link. The V1000 subscriber modules are great for shorter distances but are not the best option for this particular situation.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> Unfortunately, only 6 of the 20 households in that community are within the range of the e501 Outdoor AP. You'll have to find another way to bring connectivity to the area.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messagePurchaseAditionalProd.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    }
+}
+
+
+let $messageRunLinkplanner = document.getElementById('messageRunLinkplanner');
+
+if($messageRunLinkplanner && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> Run Cambium's LINKPlanner to see what gear is needed to extend the network and make the connection.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageRunLinkplanner.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    }
+}
+
+
+let $messageRunCnMaestro = document.getElementById('messageRunCnMaestro');
+
+if($messageRunCnMaestro && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} has reduced truck rolls by 30% because of remote troubleshooting made possible by cnMaestro's robust analytics dashboard. ‍</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} was able to prioritize devices and optimize traffic on the network to increase throughput for more critical devices on the network.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageRunCnMaestro.innerHTML = `<p class="game-font text-center"> No data</p></br>`
+        break
+    }
+}
+
+let $messageRunCnArcher = document.getElementById('messageRunCnArcher');
+
+if($messageRunCnArcher && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} ran cnArcher at the top of the clocktower to ensure the ePMP was optimized. A slight tuning based on the cnArcher data increased throughput for the three remote farms</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> ${localStorage.getItem('memberCrew3')} [Crew Member 1] ran cnArcher at the top of the furthest tower to ensure optimal placement for the V3000. A slight adjustment based on the cnArcher data increased throughput for the twenty VI OCIOS in the remote community.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageRunCnArcher.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+
+let $messageCng = document.getElementById('messageCng');
+
+if($messageCng && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageCng.innerHTML = `<p class="game-font text-center">In ${daySpent} days left you managed to connect 350 citizens in the wonderful village of Timbuktu. You installed ${(qtyV5000 > 0) ? `${qtyV5000} V5000`: ``}, ${(qtyV3000 > 0) ? `${qtyV3000} V3000`: ``}, ${(qtyV100 > 0) ? `${qtyV100} V100`: ``}, ${(qtyEPMP3000 > 0) ? `${qtyEPMP3000} EPM 3000`: ``}, & constructed ${(qtyTowers > 0) ? `${qtyTowers} towers`: ``} . You stayed within budget and were able to provide the gigabit connectivity required and the current network generates W7,600/month. There were a few things that could have made the install better though...</p>`
+        break
+    
+        case 'usa-west':
+            $messageCng.innerHTML = `<p class="game-font text-center"> In ${daySpent} days left you managed to connect 1000 citizens in the wonderful Zuni Pueblo. You installed:</p></br>
+            <div>
+            ${(qtyTower <= 0) ? `<p>${qtyTower} Towers</p> ` : ``}
+            ${(qtyPtp850 <= 0) ? `<p>${qtyPtp850} PTP 850</p> ` : ``}
+            ${(qtyCnMedusa <= 0) ? `<p>${qtyCnMedusa} cnMedusa</p> ` : ``}
+            ${(qtyPmp450b <= 0) ? `<p>${qtyPmp450b} PMP 450b</p> ` : ``}
+            ${(qtyCnPilot <= 0) ? `<p>${qtyCnPilot} cnPilot</p> ` : ``}
+            ${(qtyAne501Outdoor <= 0) ? `<p>${qtyAne501Outdoor} Ane 501 Outdoor</p> ` : ``}
+            ${(qtyR195Routers <= 0) ? `<p>${qtyR195Routers} R195 Routers</p> ` : ``}
+            </div>
+            <p class="game-font text-center"> You stayed within budget and were able to provide the gigabit connectivity required and the current network generates —$18,500/month. There were a few things that could have made the install better though...</p></br>`        
+        break
+        
+        case 'usa-east':
+            $messageCng.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageCng.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+
+let $messageCurrentNetworkGenerates = document.getElementById('messageCurrentNetworkGenerates');
+
+if($messageCurrentNetworkGenerates && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageCurrentNetworkGenerates.innerHTML = `<p class="game-font text-center">In ${daySpent} days left you managed to connect 350 citizens in the wonderful village of Timbuktu. You installed ${(qtyV5000 > 0) ? `${qtyV5000} V5000`: ``}, ${(qtyV3000 > 0) ? `${qtyV3000} V3000`: ``}, ${(qtyV100 > 0) ? `${qtyV100} V100`: ``}, ${(qtyEPMP3000 > 0) ? `${qtyEPMP3000} EPM 3000`: ``}, & constructed ${(qtyTowers > 0) ? `${qtyTowers} towers`: ``} . You stayed within budget and were able to provide the gigabit connectivity required and the current network generates $7,600/month.</p>`
+        break
+    
+        case 'usa-west':
+            $messageCurrentNetworkGenerates.innerHTML = `<p class="game-font text-center"> In ${daySpent} days left you managed to connect 1000 citizens in the wonderful Zuni Pueblo. You installed:</p></br>
+            <div>
+            ${(qtyTower <= 0) ? `<p>${qtyTower} Towers</p> ` : ``}
+            ${(qtyPtp850 <= 0) ? `<p>${qtyPtp850} PTP 850</p> ` : ``}
+            ${(qtyCnMedusa <= 0) ? `<p>${qtyCnMedusa} cnMedusa</p> ` : ``}
+            ${(qtyPmp450b <= 0) ? `<p>${qtyPmp450b} PMP 450b</p> ` : ``}
+            ${(qtyCnPilot <= 0) ? `<p>${qtyCnPilot} cnPilot</p> ` : ``}
+            ${(qtyAne501Outdoor <= 0) ? `<p>${qtyAne501Outdoor} Ane 501 Outdoor</p> ` : ``}
+            ${(qtyR195Routers <= 0) ? `<p>${qtyR195Routers} R195 Routers</p> ` : ``}
+            </div>
+            <p class="game-font text-center"> You stayed within budget and were able to provide the gigabit connectivity required and the current network generates -$25,000/month.</p></br>`        
+        break
+        
+        case 'usa-east':
+            $messageCurrentNetworkGenerates.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageCurrentNetworkGenerates.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
