@@ -1438,7 +1438,7 @@ document.addEventListener("keydown", function (event) {
     }//fin nice
     if(section == 'current-network-generates'){
         if(event.keyCode == 32){
-            redirectPage('missed-out')
+            redirectPage('witty-ending')
         }
     }//fin current-network-generates
     if(section == 'great-job'){
@@ -1539,7 +1539,7 @@ if(region == 'canada'){
         <p>[7] Outfit Tower Climber ----- ₩${priceOutfitTowerClimber} ${(qtyOutfitTowerClimber > 0)?'--- '+qtyOutfitTowerClimber:''}</p>
         <p>[8] Outfit Home Installer ₩${priceOutfitHomeInstaller} ${(qtyOutfitHomeInstaller > 0)?'--- '+qtyOutfitHomeInstaller:''}</p>
         <p>[9] Ask Advice-------₩0</p>
-        <p>Amount: ₩${cartAmount}</p>
+        
         </div>`;
     }
 }
@@ -1660,6 +1660,138 @@ if(section == 'image-stats'){
 
 
 //TODO:Mensajes
+
+let $messageLearn = document.getElementById('messageLearn');
+
+if($messageLearn && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageLearn.innerHTML = `<p class="game-font text-center"> We put this game together as a fun way to show our appreciation to the unsung heroes of internet connectivity. So wether you're an installer, tower climber, system administrator or just learning about internet connectivity, this one's for you and we hope you enjoy.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageLearn.innerHTML = `<p class="game-font text-center"> This is Why we created the game. This is how you play the game.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageLearn.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageLearn.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+//EnterName
+let $messageEnterName = document.getElementById('messageEnterName');
+
+if($messageEnterName && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageEnterName.innerHTML = `<p class="game-font text-center"> Awesome, can't wait to see what you do in Canada. Let's get started, what is your name?</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageEnterName.innerHTML = `<p class="game-font text-center"> Awesome, can't wait to see what you do in US West. Let's get started, what is your name?</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageEnterName.innerHTML = `<p class="game-font text-center"> Awesome, can't wait to see what you do in US East. Let's get started, what is your name?</p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageEnterName.innerHTML = `<p class="game-font text-center"> Awesome, can't wait to see what you do in US Mid West. Let's get started, what is your name?</p></br>`
+        break
+    }
+}
+//trenchFiber
+let $messageTrenchFiber = document.getElementById('messageTrenchFiber');
+
+if($messageTrenchFiber && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageTrenchFiber.innerHTML = `<p class="game-font text-center"> Unfortunately, the time tt takes to trench the required fiber to the home infrastructure would put you well past the 45-daytime limit. You'll need to find another way to provide connectivity.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageTrenchFiber.innerHTML = `<p class="game-font text-center"> Unfortunately, the tribal council has concluded that due to sacred lands no fiber trenching Will be allowed. You'll need to find another way to provide connectivity.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageTrenchFiber.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageTrenchFiber.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+//MessageSurvey
+let $messageSurvey = document.getElementById('messageSurvey');
+
+if($messageSurvey && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageSurvey.innerHTML = `<p class="game-font text-center"> There is a large existing power pole infrastructure from a friendly power company that is willing to lease space at a great rate. In addition there is a city clock tower at the village square that can be utilized.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageSurvey.innerHTML = `<p class="game-font text-center"> There is no existing tower infrastructure in place but there is one large tower structure at the Pueblo center's fiber core that can be utilized.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageSurvey.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageSurvey.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+//leverage-existing-estructure
+let $messageleverageExistingEstructure = document.getElementById('messageleverageExistingEstructure');
+
+if($messageleverageExistingEstructure && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageleverageExistingEstructure.innerHTML = `<p class="game-font text-center"> Great idea. No need to reinvent the wheel here.  Lets get you setup with the gear you need for this build out.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageleverageExistingEstructure.innerHTML = `<p class="game-font text-center"> Great idea. You'll Still need to buy additional towers, but no need to get permitting for an additional tower at the Pueblo center. Let's get you setup.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageleverageExistingEstructure.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageleverageExistingEstructure.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+//build-your-network
+let $messageBuildYourNetwork = document.getElementById('messageBuildYourNetwork');
+
+if($messageBuildYourNetwork && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageBuildYourNetwork.innerHTML = `<p class="game-font text-center"> Its time to build your network, lets get started with the Distribution Nodes.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageBuildYourNetwork.innerHTML = `<p class="game-font text-center"> Its time to build your network, lets get started with tower construction.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageBuildYourNetwork.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageBuildYourNetwork.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
 //Mensaje por region/ciudad al seleccionar Tarea
 let $messageSelectTask = document.getElementById('messageSelectTask');
 
@@ -2068,6 +2200,50 @@ if($messageCurrentNetworkGenerates && localStorage.getItem('region') != null){
     
         case 'usa-mid-west':
             $messageCurrentNetworkGenerates.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+
+//Mensaje successfully-installed
+let $messageAskWav = document.getElementById('messageAskWav');
+
+if($messageAskWav && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageAskWav.innerHTML = `<p class="game-font text-center"> I recommend surveying the existing tower and pole infrastructure of the village to see if it fits the needs for this deployment.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageAskWav.innerHTML = `<p class="game-font text-center"> I recommend surveying the existing tower and pole infrastructure of the Pueblo to see if it fits the needs for this deployment.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageAskWav.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageAskWav.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+let $messageAskAdvice = document.getElementById('messageAskAdvice');
+
+if($messageAskAdvice && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageAskAdvice.innerHTML = `<p class="game-font text-center"> Glad you asked and happy to help. I've run Cambium's Link Planner based on the topography and GIS data from the city and it looks like this is what you'll need to get everyone connected:</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageAskAdvice.innerHTML = `<p class="game-font text-center"> Glad you asked and happy to help. I've run Cambium's Link Planner based on the topography and GIS data from the Pueblo and it looks like this is what you'll need to get everyone connected:</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageAskAdvice.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageAskAdvice.innerHTML = `<p class="game-font text-center"> </p></br>`
         break
     }
 }
