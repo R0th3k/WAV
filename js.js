@@ -242,7 +242,7 @@ function redirectPage(path) {
 //Guardar usuario
 let userNameInput = document.getElementById('userName')
 if(userNameInput){
-    userNameInput.setAttribute('onblur','saveUser()')
+    //userNameInput.setAttribute('onblur','saveUser()')
 }
 function saveUser() {    
     if (!userNameInput.value) {
@@ -654,10 +654,10 @@ switch (region) {
             screenTop.classList.add("screen_top_default");
             screenBottom.classList.add("screen_bottom_default");
         }
-        // else if(section == 'emptyLot'){
-        //     screenTop.classList.add("screen_top_city");
-        //     screenBottom.classList.add("screen_bottom_factory");
-        // }
+         else if(section == 'end'){
+             screenTop.classList.add("screen_top_city");
+             screenBottom.classList.add("screen_bottom_factory");
+         }
         else if(section == 'connectivity-to-the-farms'){
             screenTop.classList.add("screen_top_city");
             screenBottom.classList.add("screen_bottom_factory")
@@ -672,7 +672,7 @@ switch (region) {
             screenTop.classList.add("screen_top_default");
             screenBottom.classList.add("screen_bottom_default");
         }
-        else if(section == 'connectivity-to-the-farms'){
+        else if(section == 'connectivity-to-the-farms' || section == 'end'){
             screenTop.classList.add("screen_top_city");
             screenBottom.classList.add("screen_bottom_factory")
         }else{
@@ -2244,6 +2244,29 @@ if($messageAskAdvice && localStorage.getItem('region') != null){
     
         case 'usa-mid-west':
             $messageAskAdvice.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    }
+}
+
+
+let $messageMissedOut = document.getElementById('messageMissedOut');
+
+if($messageMissedOut && localStorage.getItem('region') != null){
+    switch(region){
+        case 'canada':
+           $messageMissedOut.innerHTML = `<p class="game-font text-center"> You missed out on increasing the throughput of the 3 remote farms by not using cnArcher. You also missed out on a W5,000/mo management contract by not leveraging cnMaestro.</p></br>`
+        break
+    
+        case 'usa-west':
+            $messageMissedOut.innerHTML = `<p class="game-font text-center"> You missed out on tuning your V3000 by not using cnArcher. You also missed out on device prioritization by not leveraging cnMaestro to optimize the network. This also ended up costing you an extra $6,500/month in potential revenue from disgruntled customers leaving your service.</p></br>`
+        break
+        
+        case 'usa-east':
+            $messageMissedOut.innerHTML = `<p class="game-font text-center"> </p></br>`
+        break
+    
+        case 'usa-mid-west':
+            $messageMissedOut.innerHTML = `<p class="game-font text-center"> </p></br>`
         break
     }
 }
